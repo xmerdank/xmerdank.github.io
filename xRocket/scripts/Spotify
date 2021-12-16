@@ -24,14 +24,14 @@ const postMethod = "POST";
 const isQuanX = typeof $task != "undefined";
 const binaryBody = isQuanX ? new Uint8Array($response.bodyBytes) : $response.body;
 let body;
-if($request.url.indexOf("bootstrap/v1/bootstrap") !== -1 && method === postMethod){
+if(url.indexOf("bootstrap/v1/bootstrap") !== -1 && method === postMethod){
     let bootstrapResponseType = protobuf.Root.fromJSON(spotifyJson).lookupType("BootstrapResponse");
     let bootstrapResponseMessage = bootstrapResponseType.decode(binaryBody);
     accountAttributesMap = bootstrapResponseMessage.ucsResponseV0.success.customization.success.accountAttributesSuccess.accountAttributes;
     processMap(accountAttributesMap);
     body = bootstrapResponseType.encode(bootstrapResponseMessage).finish();
     console.log('bootstrap');
-} else if($request.url.indexOf("user-customization-service/v1/customize") !== -1 && method === postMethod){
+} else if(url.indexOf("user-customization-service/v1/customize") !== -1 && method === postMethod){
     let ucsResponseWrapperType = protobuf.Root.fromJSON(spotifyJson).lookupType("UcsResponseWrapper");
     let ucsResponseWrapperMessage = ucsResponseWrapperType.decode(binaryBody);
     accountAttributesMap = ucsResponseWrapperMessage.success.accountAttributesSuccess.accountAttributes;
