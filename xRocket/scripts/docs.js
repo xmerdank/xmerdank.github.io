@@ -8,7 +8,7 @@ var obj= {
       "productId": "com.readdle.ReaddleDocsIPad.subscription.year50_upd_user",
       "subscriptionExpirationIntent": "userCancelled",
       "receiptStatus": "ok",
-      "subscriptionExpirationDate": "17:48 25/11/2019",
+      "subscriptionExpirationDate": "17:48 25/11/2099",
       "isEligibleForIntroPeriod": false,
       "originalTransactionId": "20000625420102",
       "productName": "subscription",
