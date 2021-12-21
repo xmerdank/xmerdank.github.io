@@ -1,5 +1,5 @@
 /*
-* Surge：
+* Surge0：
 [MITM]
 hostname = spclient.wg.spotify.com
 [Script]
