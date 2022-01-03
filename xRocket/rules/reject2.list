@@ -3,7 +3,7 @@ DOMAIN-SUFFIX,mobile-5425.api.privacy-center.org
 DOMAIN-SUFFIX,sdk.privacy-center.org 
 DOMAIN-SUFFIX,app.adjust.world 
 DOMAIN-SUFFIX,mobile.useinsider.com
-DOMAIN-SUFFIX,app.lcwaikiki.com 
+#DOMAIN-SUFFIX,app.lcwaikiki.com 
 DOMAIN-SUFFIX,mobile-collector.newrelic.com 
 DOMAIN-SUFFIX,cdn.dsmcdn.com 
 DOMAIN-SUFFIX,support0.bigo.sg 
