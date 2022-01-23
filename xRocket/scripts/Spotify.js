@@ -39,7 +39,7 @@ if(url.indexOf("bootstrap/v1/bootstrap") !== -1 && method === postMethod){
     body = ucsResponseWrapperType.encode(ucsResponseWrapperMessage).finish();
     console.log('customize');
 } else {
-    $notification.post('Spotify Premium', "Ошибка сопоставления пути/метода запроса:", method + "," + url);
+    $notification.post('spotify解锁premium', "路径/请求方法匹配错误:", method + "," + url);
 }
 console.log(`${body.byteLength}---${body.buffer.byteLength}`);
 if(isQuanX){
@@ -59,7 +59,7 @@ function processMap(accountAttributesMap){
     accountAttributesMap['player-license']['stringValue'] ='premium';
     accountAttributesMap['shuffle']['boolValue'] =false;
     accountAttributesMap['ads']['boolValue'] =false;
-    accountAttributesMap['on-demand']['boolValue'] =true; // новое
+    accountAttributesMap['on-demand']['boolValue'] =true; // 新增
 
 
     accountAttributesMap['unrestricted'] = deepCopy(accountAttributesMap['shuffle']);
@@ -90,18 +90,18 @@ function processMap(accountAttributesMap){
     delete accountAttributesMap['ad-catalogues'];
     delete accountAttributesMap['ad-use-adlogic'];
 
-    accountAttributesMap['high-bitrate']['boolValue'] =true; // новое
-    accountAttributesMap['libspotify']['boolValue'] =true; // новое
-    accountAttributesMap['can_use_superbird']['boolValue'] =true; // новое
-    accountAttributesMap['offline']['boolValue'] =true; // новое
+    accountAttributesMap['high-bitrate']['boolValue'] =true; // 新增
+    accountAttributesMap['libspotify']['boolValue'] =true; // 新增
+    accountAttributesMap['can_use_superbird']['boolValue'] =true; // 新增
+    accountAttributesMap['offline']['boolValue'] =true; // 新增
 }
 
 
 function deepCopy(data, hash = new WeakMap()) {
     if(typeof data !== 'object' || data === null){
-        throw new TypeError('Переданный параметр не является объектом')
+        throw new TypeError('传入参数不是对象')
     }
-    // Определите, существует ли в хэше ссылка на входящий объект, который нужно скопировать.
+    // 判断传入的待拷贝对象的引用是否存在于hash中
     if(hash.has(data)) {
         return hash.get(data)
     }
@@ -109,22 +109,22 @@ function deepCopy(data, hash = new WeakMap()) {
     const dataKeys = Object.keys(data);
     dataKeys.forEach(value => {
         const currentDataValue = data[value];
-        // Значения и функции основных типов данных присваиваются и копируются напрямую.
+        // 基本数据类型的值和函数直接赋值拷贝
         if (typeof currentDataValue !== "object" || currentDataValue === null) {
             newData[value] = currentDataValue;
         } else if (Array.isArray(currentDataValue)) {
-            // Реализовать глубокое копирование массива
+            // 实现数组的深拷贝
             newData[value] = [...currentDataValue];
         } else if (currentDataValue instanceof Set) {
-            // Реализовать глубокое копирование заданных данных
+            // 实现set数据的深拷贝
             newData[value] = new Set([...currentDataValue]);
         } else if (currentDataValue instanceof Map) {
-            // Реализовать глубокое копирование картографических данных
+            // 实现map数据的深拷贝
             newData[value] = new Map([...currentDataValue]);
         } else {
-            // Сохраните ссылку на копируемый объект в хэше
+            // 将这个待拷贝对象的引用存于hash中
             hash.set(data,data);
-            // Обычные объекты назначаются рекурсивно
+            // 普通对象则递归赋值
             newData[value] = deepCopy(currentDataValue, hash);
         }
     });
