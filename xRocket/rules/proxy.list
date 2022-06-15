@@ -98,7 +98,7 @@ DOMAIN-SUFFIX,vkuser.net
 
 
 ####### Github #######
-DOMAIN-KEYWORD,github
+#DOMAIN-KEYWORD,github
 DOMAIN-SUFFIX,rawgit.com
 DOMAIN-SUFFIX,ghcr.io
 DOMAIN-SUFFIX,git.io
@@ -127,5 +127,5 @@ DOMAIN-SUFFIX,pornhub.com
 DOMAIN-SUFFIX,likee.video
 DOMAIN-SUFFIX,transfermarkt.ru
 DOMAIN-SUFFIX,trendyol.com
-DOMAIN-SUFFIX,whoscored.com
+#DOMAIN-SUFFIX,whoscored.com
 DOMAIN-SUFFIX,lcwaikiki.com
