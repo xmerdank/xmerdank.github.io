@@ -99,6 +99,7 @@ DOMAIN-SUFFIX,vkuser.net
 
 ####### Github #######
 #DOMAIN-KEYWORD,github
+DOMAIN-SUFFIX,raw.githubusercontent.com
 DOMAIN-SUFFIX,rawgit.com
 DOMAIN-SUFFIX,ghcr.io
 DOMAIN-SUFFIX,git.io
