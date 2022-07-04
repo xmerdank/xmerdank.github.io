@@ -6,7 +6,7 @@ DOMAIN-SUFFIX,audio-ssl.itunes.apple.com
 DOMAIN-SUFFIX,audio.itunes.apple.com
 DOMAIN-SUFFIX,streamingaudio.itunes.apple.com
 DOMAIN-SUFFIX,downloaddispatch.itunes.apple.com
-DOMAIN-SUFFIX,push.apple.com
+#DOMAIN-SUFFIX,push.apple.com
 
 
 ####### Meta #######
@@ -130,3 +130,4 @@ DOMAIN-SUFFIX,transfermarkt.world
 #DOMAIN-SUFFIX,trendyol.com
 #DOMAIN-SUFFIX,whoscored.com
 DOMAIN-SUFFIX,lcwaikiki.com
+DOMAIN-SUFFIX,ihtier.net
