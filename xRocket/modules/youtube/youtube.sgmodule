@@ -1,0 +1,27 @@
+#!url=https://xmerdank.github.io/xRocket/modules/youtube/youtube.sgmodule
+#!name=xYoutube @xmerdank
+#!desc=Remove Youtube ads (IOS >= 15)
+
+# > Feature
+# Delete ads and shorts that appear in waterfalls, videos, and searches
+# Delete video ads in Shorts
+# Delete bottom upload button
+# Add picture-in-picture (PIP), background playback (Beta)
+# Add automatic translation (Thanks @VirgilClyne)
+
+# > Note
+# This module is comprehensive enough and does not need to be mixed with other rules to prevent the rewriting rules from being destroyed.
+# Clients that do not support Mock can use reject-200/reject-img instead.
+
+# > Credit
+# @Choler & @DivineEngine & @app2smile
+
+[Script]
+youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)\?,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.beta.js
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)\?,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.beta.js
+
+[Map Local]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://xmerdank.github.io/xRocket/modules/youtube/blank.txt" header="Content-Type: application/vnd.yt-ump"
+
+[MITM]
+hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com
