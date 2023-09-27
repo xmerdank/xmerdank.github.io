@@ -1,22 +1,13 @@
 /*
 MIX 
 ***************************
-QuantumultX:
-
-[rewrite_local]
-https?:\/\/bmall\.camera360\.com\/api\/mix\/recovery url script-response-body https://xmerdank.github.io/xRocket/scripts/mix.js
-
-[mitm]
-hostname = bmall.camera360.com
-
-***************************
 Surge4 or Loon:
-/*
+
 [Script]
-http-response https?:\/\/bmall\.camera360\.com\/api\/mix\/recovery requires-body=1,max-size=0,script-path=https://xmerdank.github.io/xRocket/scripts/mix.js
+http-response https?:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery requires-body=1,max-size=0,script-path=https://xmerdank.github.io/xRocket/scripts/mix.js
 
 [MITM]
-hostname = bmall.camera360.com
+hostname = cdn-bm.camera360.com
 
 **************************/
 

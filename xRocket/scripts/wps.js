@@ -3,7 +3,18 @@ WPS Office
 ^https?:\/\/account\.wps\.cn\/api\/users requires-body=1,max-size=-1
 hostname = account.wps.cn
 
-*/
+/*
+WPS Office 
+***************************
+Surge4 or Loon:
+
+[Script]
+http-response ^https?:\/\/[a-z-]*account\.wps\.c(n|om)(:\d+|)\/api\/users requires-body=1,max-size=-1,script-path=https://xmerdank.github.io/xRocket/scripts/wps.js
+
+[MITM]
+hostname = *account.wps.cn, *account.wps.com
+
+**************************/
 
 var body = JSON.parse($response.body);
 var obj = {
@@ -28,7 +39,7 @@ var obj = {
     expire_time: 1846256142,
     enabled: [
       { memberid: 40, name: "Super member", expire_time: 1846256142 },
-      { memberid: 20, name: "WPS member", expire_time: 1846256142 },
+      { memberid: 20, name: "WPS membe", expire_time: 1846256142 },
       { memberid: 12, name: "Rice husk member", expire_time: 1846256142 }
     ]
   },

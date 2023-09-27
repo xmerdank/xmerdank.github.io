@@ -1,7 +1,6 @@
 /********************************
-Membership unlock for VSCO & 1Blocker
+Membership unlock for VSCO & 1Blocker & HTTPBot
 Please note that you may need to reinstall app for script to work.
-
 
 *********************************
 Surge4, Loon and Shadowrocket configuration:
@@ -18,6 +17,7 @@ const resp = {};
 const obj = JSON.parse(typeof $response != "undefined" && $response.body || null);
 const ua = $request.headers['User-Agent'] || $request.headers['user-agent'];
 const list = {
+	'HTTPBot': { name: 'rc_lifetime', id: 'com.behindtechlines.HTTPBot.prounlock' },
 	'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
 	'1Blocker': { name: 'premium', id: 'blocker.ios.subscription.yearly' }
 };

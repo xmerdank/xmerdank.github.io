@@ -72,3 +72,5 @@ function video_lists(lists) {
     return lists;
 }
 
+// [MITM]
+// hostname = *.tiktokv.com,*.byteoversea.com, *.tik-tokapi.com
