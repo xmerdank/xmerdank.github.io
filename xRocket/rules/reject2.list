@@ -31,3 +31,4 @@ DOMAIN-SUFFIX,c.datpix.net
 DOMAIN-SUFFIX,hgbnr.com
 DOMAIN-SUFFIX,hg-bn.con
 DOMAIN-SUFFIX,mainad-codpp.con
+URL-REGEX,^https?:\/\/.+365scores\.com.+(ads|Ads|ADS).*
