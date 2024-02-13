@@ -12,6 +12,7 @@ DOMAIN-KEYWORD,-spotify-com
 DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
+DOMAIN-SUFFIX,chat.openai.com
 DOMAIN-SUFFIX,linkmessenger.me
 DOMAIN-SUFFIX,updates2.linkmessenger.me
 DOMAIN-SUFFIX,icq.com
