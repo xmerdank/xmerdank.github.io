@@ -8,6 +8,7 @@ DOMAIN-SUFFIX,streamingaudio.itunes.apple.com
 DOMAIN-SUFFIX,downloaddispatch.itunes.apple.com
 #DOMAIN-SUFFIX,push.apple.com
 DOMAIN-SUFFIX,shazam.apple.com
+DOMAIN-SUFFIX,sequoia.apple.com
 
 
 ####### Meta #######
