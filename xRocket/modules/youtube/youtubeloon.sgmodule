@@ -1,10 +1,6 @@
-#!url=https://xmerdank.github.io/xRocket/modules/youtube/youtubeloon.sgmodule
+#!openUrl=https://xmerdank.github.io/xRocket/modules/youtube/youtubeloon.sgmodule
 #!name=xYoutube(Music) @xmerdank
-#!desc=For Youtube & Youtube Music (IOS >= 15)
-
-# > Feature
-# - Remove Youtube (Music) ads
-# - Delete Youtube bottom upload button & Youtube Music bottom selection and upgrade button
+#!desc=For Youtube & Youtube Music (IOS >= 15) /nFeature /n- Remove Youtube (Music) ads /n- Delete Youtube bottom upload button & Youtube Music bottom selection and upgrade button
 # + Added Youtube picture-in-picture (PIP)
 # + Add Youtube subtitle translation (Thanks @VirgilClyne)
 # + Add Youtube (Music) background playback
@@ -17,16 +13,25 @@
 # This module is comprehensive enough and does not need to be mixed with other rules to prevent the rewriting rules from being destroyed.
 # Clients that do not support Mock can use reject-200/reject-img instead.
 
+#!author = @xmerdank
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
+#!date = 2024-03-11 18:49:17
 # > Credit
-# @Choler & @DivineEngine & @app2smile
+# @Maasea @Choler & @DivineEngine & @app2smile
 
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 
+[Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200
+
 [Script]
-youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence),requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.beta.js
-youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting),requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.beta.js
+http-request 
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.beta.js,requires-body=turned,binary-body-mode=true, tag = YouTube request 
+
+http-response
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.beta.js,requires-body=true,binary-body-mode=true, tag = YouTube response 
 
 [Map Local]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://xmerdank.github.io/xRocket/modules/youtube/blank.txt"
