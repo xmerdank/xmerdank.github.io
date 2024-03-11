@@ -25,9 +25,9 @@
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200
 
 [Script]
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.beta.js, requires-body=true, binary-body=true, tag=YouTube request 
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.beta.js, requires-body = true, binary-body-mode = true, tag=YouTube request 
 
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.beta.js, requires-body=true, binary-body=true, tag=YouTube response 
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.beta.js, requires-body = true, binary-body-mode = true, tag=YouTube response 
 
 [MITM]
 hostname = *.googlevideo.com, youtubei.googleapis.com
