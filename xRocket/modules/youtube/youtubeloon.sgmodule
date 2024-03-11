@@ -1,12 +1,13 @@
 #!openUrl=https://xmerdank.github.io/xRocket/modules/youtube/youtubeloon.sgmodule
 #!name=xYoutube(Music)
 #!desc=For Youtube & Youtube Music (IOS >= 15)
-- Remove Youtube (Music) ads
-- Delete Youtube bottom upload button & Youtube Music bottom selection and upgrade button
-+ Added Youtube picture-in-picture (PIP)
-+ Add Youtube subtitle translation (Thanks @VirgilClyne)
-+ Add Youtube (Music) background playback
-+ Add Youtube Music lyrics translation
+# Feature
+# - Remove Youtube (Music) ads
+# - Delete Youtube bottom upload button & Youtube Music bottom selection and upgrade button
+# + Added Youtube picture-in-picture (PIP)
+# + Add Youtube subtitle translation (Thanks @VirgilClyne)
+# + Add Youtube (Music) background playback
+# + Add Youtube Music lyrics translation
 
 # > Note
 # Youtube picture-in-picture and background playback are turned off in the client respectively
@@ -37,4 +38,4 @@ http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|p
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://xmerdank.github.io/xRocket/modules/youtube/blank.txt"
 
 [MITM]
-hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com
+hostname = *.googlevideo.com, youtubei.googleapis.com
