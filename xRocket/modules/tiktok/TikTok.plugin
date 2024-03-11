@@ -1,12 +1,12 @@
-#!name = TikTok
+#!name = xTikTok
 #!desc =  Удаляет водяной знак видео в TikTok
 #!openUrl = 
 #!author = @xmerdank
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/TikTok.png
-#!date = 2024-01-20 02:33:16
+#!date = 2024-03-11 02:33:16
 
 [Script]
-http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/(favorite|listcollection)) script-path = https://xmerdank.github.io/xRocket/modules/tiktok/TikTok_remove_watermark.js, requires-body = true, tag = xTikTok
+http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/(favorite|listcollection)) script-path = https://xmerdank.github.io/xRocket/modules/tiktok/TikTok_remove_watermark.js, requires-body = true, tag = TikTok
 
 [Mitm]
 hostname = *.byteoversea.com, *.tik-tokapi.com, *.tiktokv.com
