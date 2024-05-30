@@ -13,6 +13,7 @@ DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
 DOMAIN-SUFFIX,chat.openai.com
+DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,linkmessenger.me
 DOMAIN-SUFFIX,updates2.linkmessenger.me
 DOMAIN-SUFFIX,icq.com
@@ -46,7 +47,6 @@ DOMAIN-SUFFIX,ivi.ru
 DOMAIN-SUFFIX,wordpress.com
 DOMAIN-SUFFIX,webmoney.ru
 DOMAIN-SUFFIX,yoomoney.ru
-DOMAIN-SUFFIX,lsapp.eu
 DOMAIN-SUFFIX,spoti.fi
 DOMAIN-SUFFIX,imgsmail.ru
 DOMAIN-SUFFIX,mycdn.me
