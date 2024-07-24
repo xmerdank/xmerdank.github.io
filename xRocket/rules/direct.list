@@ -7,8 +7,8 @@ DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,skype
 DOMAIN-KEYWORD,mail.ru
 DOMAIN-KEYWORD,yandex
-DOMAIN-KEYWORD,spotify
-DOMAIN-KEYWORD,-spotify-com
+#DOMAIN-KEYWORD,spotify
+#DOMAIN-KEYWORD,-spotify-com
 DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
@@ -16,10 +16,8 @@ DOMAIN-SUFFIX,chat.openai.com
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,linkmessenger.me
 DOMAIN-SUFFIX,updates2.linkmessenger.me
-DOMAIN-SUFFIX,icq.com
-DOMAIN-SUFFIX,icq.net
-DOMAIN-SUFFIX,github.com
-DOMAIN-SUFFIX,trendyol.com
+#DOMAIN-SUFFIX,github.com
+#DOMAIN-SUFFIX,trendyol.com
 DOMAIN,cdn.dsmcdn.com
 DOMAIN-SUFFIX,stackoverflow.com
 DOMAIN-SUFFIX,lyngsat.com
@@ -47,7 +45,7 @@ DOMAIN-SUFFIX,ivi.ru
 DOMAIN-SUFFIX,wordpress.com
 DOMAIN-SUFFIX,webmoney.ru
 DOMAIN-SUFFIX,yoomoney.ru
-DOMAIN-SUFFIX,spoti.fi
+#DOMAIN-SUFFIX,spoti.fi
 DOMAIN-SUFFIX,imgsmail.ru
 DOMAIN-SUFFIX,mycdn.me
 DOMAIN-SUFFIX,icloud.com

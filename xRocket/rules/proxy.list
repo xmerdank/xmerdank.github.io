@@ -101,9 +101,10 @@ DOMAIN-SUFFIX,vkuser.net
 
 
 ####### Github #######
-#DOMAIN-KEYWORD,github
-#DOMAIN-SUFFIX,raw.githubusercontent.com
+DOMAIN-KEYWORD,github
+DOMAIN-SUFFIX,raw.githubusercontent.com
 DOMAIN-SUFFIX,rawgit.com
+DOMAIN-SUFFIX,github.io
 DOMAIN-SUFFIX,ghcr.io
 DOMAIN-SUFFIX,git.io
 
@@ -130,8 +131,8 @@ DOMAIN-SUFFIX,onlyfans.com
 DOMAIN-SUFFIX,pornhub.com
 DOMAIN-SUFFIX,likee.video
 DOMAIN-SUFFIX,transfermarkt.world
-#DOMAIN-SUFFIX,trendyol.com
-#DOMAIN-SUFFIX,whoscored.com
+DOMAIN-SUFFIX,trendyol.com
+DOMAIN-SUFFIX,whoscored.com
 DOMAIN-SUFFIX,lcwaikiki.com
 DOMAIN-SUFFIX,ihtier.net
 DOMAIN-SUFFIX,lsapp.eu
