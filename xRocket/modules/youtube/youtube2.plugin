@@ -1,9 +1,0 @@
-#!url=https://xmerdank.github.io/xRocket/modules/youtube/youtube2.plugin
-#!name=xYoutube2 @xmerdank
-#!desc=Remove Youtube ads BETA (IOS >= 15)
-
-[Mitm]
-hostname = youtubei.googleapis.com
-
-[Script]
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next)\? script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube2.js, requires-body=true, binary-body-mode=true, timeout=10, tag=youtube-proto
