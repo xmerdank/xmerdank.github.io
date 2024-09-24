@@ -18,11 +18,11 @@
 #!author = xmerdank [https://github.com/xmerdank]
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
 #!date = 2024-09-24 16:14:17
-#!select = blockUpload, true, false
-#!select = blockImmersive, true, false
-#!select = lyricLang, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
-#!select = captionLang, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
-#!select = debug, true, false
+#!select = Скрыть кнопку загрузки, true, false
+#!select = Скрыть кнопку выбора, true, false
+#!select = Язык перевода субтитров, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
+#!select = Язык перевода текста, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
+#!select = Включить режим отладки, true, false
 # > Credit
 # @Maasea @Choler & @DivineEngine & @app2smile
 
@@ -42,9 +42,9 @@ AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
 [Script]
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.preview.js, engine={{{scriptExecutionEngine}}}, requires-body = true, binary-body-mode = true, tag=YouTube request 
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.preview.js, requires-body = true, binary-body-mode = true, tag=YouTube request 
 
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.preview.js, engine={{{scriptExecutionEngine}}}, argument="{"lyricLang":"{{{lyricLang}}}","captionLang":"{{{captionLang}}}","blockUpload":{{{blockUpload}}},"blockImmersive":{{{blockImmersive}}},"debug":{{{debug}}}}" requires-body = true, binary-body-mode = true, tag=YouTube response 
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.preview.js, requires-body = true, binary-body-mode = true, tag=YouTube response 
 
 [MITM]
 hostname = %APPEND% -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
