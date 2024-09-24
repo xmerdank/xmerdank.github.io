@@ -1,5 +1,5 @@
 #!name=xYoutube(Music)
-#!desc=For Youtube & Youtube Music (iOS >= 15)
+#!desc=Youtube Ad Full blocker with PIP player
 # Feature
 # - Remove Youtube (Music) ads
 # - Delete Youtube bottom upload button & Youtube Music bottom selection and upgrade button
@@ -17,17 +17,29 @@
 
 #!author = @xmerdank
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
-#!date = 2024-09-23 18:49:17
+#!date = 2024-09-24 18:49:17
 # > Credit
 # @Maasea @Choler & @DivineEngine & @app2smile
 
-[Rewrite]
-^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200
+[Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+
+[Url Rewrite]
+# /Modules/YT-Adblocker.module
+# ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad - reject-img
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+# ======= Universal Ad Request ======= #
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+# ======= General Video Ad request ======= #
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
 [Script]
 http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.preview.js, requires-body = true, binary-body-mode = true, tag=YouTube request 
 
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.preview.js,argument="{"lyricLang":"ru-RU","captionLang":"ru-RU","blockUpload":true,"immersive":true,"debug":false}" requires-body = true, binary-body-mode = true, tag=YouTube response 
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.preview.js,argument="{"lyricLang":"{{{lyricLang}}}","captionLang":"{{{captionLang}}}","blockUpload":{{{blockUpload}}},"blockImmersive":{{{blockImmersive}}},"debug":{{{debug}}}}" requires-body = true, binary-body-mode = true, tag=YouTube response 
 
 [MITM]
-hostname = *.googlevideo.com, youtubei.googleapis.com
+hostname = %APPEND% -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
