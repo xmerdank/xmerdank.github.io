@@ -20,8 +20,8 @@
 #!date = 2024-09-24 16:14:17
 #!select = Скрыть кнопку загрузки, true, false
 #!select = Скрыть кнопку выбора, true, false
-#!select = Язык перевода субтитров, es, en, ru-RU, off
-#!select = Язык перевода текста, es, en, ru-RU, off
+#!select = Язык перевода субтитров, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
+#!select = Язык перевода текста, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
 #!select = Включить режим отладки, true, false
 # > Credit
 # @Maasea @Choler & @DivineEngine & @app2smile
