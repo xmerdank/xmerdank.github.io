@@ -1,27 +1,12 @@
 #!name=xYoutube(Music)
 #!desc=Youtube Ad Full blocker with PIP player
-# Feature
-# - Remove Youtube (Music) ads
-# - Delete Youtube bottom upload button & Youtube Music bottom selection and upgrade button
-# + Added Youtube picture-in-picture (PIP)
-# + Add Youtube subtitle translation (Thanks @VirgilClyne)
-# + Add Youtube (Music) background playback
-# + Add Youtube Music lyrics translation
-
-# > Note
-# Youtube picture-in-picture and background playback are turned off in the client respectively
-# - Settings -> General -> Picture in Picture
-# - Settings -> Background playback and downloads -> Background playback
-# This module is comprehensive enough and does not need to be mixed with other rules to prevent the rewriting rules from being destroyed.
-# Clients that do not support Mock can use reject-200/reject-img instead.
-
 #!author = xmerdank [https://github.com/xmerdank]
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
 #!date = 2024-09-24 16:14:17
 #!select = Скрыть кнопку загрузки, true, false
 #!select = Скрыть кнопку выбора, true, false
-#!select = Язык перевода субтитров, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
-#!select = Язык перевода текста, zh-Hans, zh-Hant, ja, ko, en, ru-RU, off
+#!select = Язык перевода субтитров, en, ru-RU, off
+#!select = Язык перевода текста, en, ru-RU, off
 #!select = Включить режим отладки, true, false
 # > Credit
 # @Maasea @Choler & @DivineEngine & @app2smile
@@ -39,4 +24,4 @@ http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|pl
 http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.preview.js, requires-body = true, binary-body-mode = true, tag=YouTube response 
 
 [MITM]
-hostname = %APPEND% -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
+hostname = rr*.googlevideo.com, youtubei.googleapis.com
