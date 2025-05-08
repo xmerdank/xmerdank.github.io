@@ -4,7 +4,6 @@ DOMAIN-KEYWORD,recaptcha
 DOMAIN-KEYWORD,gstatic
 DOMAIN-KEYWORD,1drv
 DOMAIN-KEYWORD,microsoft
-DOMAIN-KEYWORD,skype
 DOMAIN-KEYWORD,mail.ru
 DOMAIN-KEYWORD,yandex
 #DOMAIN-KEYWORD,spotify
@@ -12,26 +11,14 @@ DOMAIN-KEYWORD,yandex
 DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
-DOMAIN-SUFFIX,poizon.com
-DOMAIN-SUFFIX,dewucdn.com
-DOMAIN-SUFFIX,dewu.com
-DOMAIN-SUFFIX,chat.openai.com
-DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,linkmessenger.me
 DOMAIN-SUFFIX,updates2.linkmessenger.me
 #DOMAIN-SUFFIX,github.com
 #DOMAIN-SUFFIX,trendyol.com
-DOMAIN,cdn.dsmcdn.com
-DOMAIN-SUFFIX,stackoverflow.com
-DOMAIN-SUFFIX,lyngsat.com
-DOMAIN-SUFFIX,premierleague.com
 DOMAIN-SUFFIX,mail.me
 DOMAIN-SUFFIX,python.org
 DOMAIN-SUFFIX,pypi.org
 DOMAIN-SUFFIX,ipsw.me
-DOMAIN-SUFFIX,binance.com
-DOMAIN-SUFFIX,binance.me
-DOMAIN-SUFFIX,capital.com
 DOMAIN-SUFFIX,appcenter.ms
 DOMAIN-SUFFIX,onedrive.com
 DOMAIN-SUFFIX,live.com
