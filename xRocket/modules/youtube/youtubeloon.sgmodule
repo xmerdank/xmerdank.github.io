@@ -2,26 +2,30 @@
 #!desc=Youtube Ad Full blocker with PIP player
 #!author = xmerdank [https://github.com/xmerdank]
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/YouTube.png
-#!date = 2024-09-25 12:45:17
-#!select = Скрыть кнопку загрузки, true, false
-#!select = Скрыть кнопку выбора, true, false
-#!select = Язык перевода субтитров, en, ru-RU, off
-#!select = Язык перевода текста, en, ru-RU, off
-#!select = Включить режим отладки, true, false
+#!date = 2025-05-13 15:17:08
+#!system=iOS, iPadOS, macOS
+#!system_version=15
+#!loon_version=3.2.4(787)
 # > Credit
 # @Maasea @Choler & @DivineEngine & @app2smile
 
-[Rule]
-AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+[Argument]
+blockUpload=switch, false, true, tag=Скрыть кнопку загрузки, desc=Используется для скрытия кнопки загрузки на нижней панели YouTube
+blockShorts=switch, false, true, tag=Скрыть кнопку Shorts, desc=Используется для скрытия кнопки Shorts на нижней панели YouTube
+blockImmersive=switch, false, true, tag=Скрыть кнопку выбора, desc=Используется для скрытия кнопки выбора на нижней панели YouTube Music
+captionLang=select, "ru", "en", "off", tag=Язык перевода субтитров, desc=На какой язык вы хотите перевести субтитры YouTube?
+lyricLang=select, "ru", "en", "off", tag=Язык перевода текста, desc=На какой язык вы хотите перевести субтитры YouTube Music?
+debug=switch, false, true, tag=Включить режим отладки, desc=Режим отладки для этого плагин
 
-[Url Rewrite]
-^https:\/\/rr[\w-]+\.googlevideo\.com\/initplayback\? reject-dict
+[Rule]
+AND, ((DOMAIN-SUFFIX, googlevideo.com), (PROTOCOL, QUIC)), REJECT
+AND, ((DOMAIN-SUFFIX, youtubei.googleapis.com), (PROTOCOL, QUIC)), REJECT
+
+[Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad reject-200
 
 [Script]
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|reel\/reel_watch_sequence|get_watch) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/request.js, requires-body = true, binary-body-mode = true, tag=YouTube request 
-
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(?:browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path = https://raw.githubusercontent.com/RuCu6/Loon/main/Scripts/youtube/response.js, requires-body = true, binary-body-mode = true, tag=YouTube response 
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://github.com/Moli-X/Tool/raw/X/Loon/Plugin/Kelee/Script/YouTube_remove_ads_response.js, requires-body = true, binary-body-mode = true, argument=[{blockUpload},{blockShorts},{blockImmersive},{captionLang},{lyricLang},{debug}],tag=YouTube request 
 
 [MITM]
-hostname = rr*.googlevideo.com, youtubei.googleapis.com
+hostname = *.googlevideo.com, youtubei.googleapis.com
