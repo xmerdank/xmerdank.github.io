@@ -86,6 +86,9 @@ DOMAIN-SUFFIX,ytimg.com
 DOMAIN-SUFFIX,youtu.be
 DOMAIN-SUFFIX,googlevideo.com
 DOMAIN-SUFFIX,oauthaccountmanager.googleapis.com
+# Gmail: предпросмотр и загрузка вложений (остальной Google идёт напрямую через direct.list)
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,usercontent.google.com
 
 
 ####### Vkontakte #######

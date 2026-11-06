@@ -33,18 +33,18 @@ DOMAIN-SUFFIX,mil.tm
 DOMAIN-SUFFIX,co.tm
 DOMAIN-SUFFIX,net.tm
 
------Turkmenhemrasy-----
+# ----- Turkmenhemrasy -----
 IP-CIDR,185.246.72.0/22
 
----------AGTS----------
+# ----- AGTS -----
 IP-CIDR,93.171.220.0/22
 IP-CIDR,95.47.57.0/24
 
---------TMCELL--------
+# ----- TMCELL -----
 IP-CIDR,93.171.174.0/24
 IP-CIDR,185.69.186.0/24
 
--------Telecom-------
+# ----- Telecom -----
 IP-CIDR,95.85.96.0/19
 IP-CIDR,103.220.0.0/22
 IP-CIDR,119.235.112.0/20

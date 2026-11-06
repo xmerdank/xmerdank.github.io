@@ -1,0 +1,10 @@
+# ChatGPT / OpenAI / Sora
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,chat.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,sora.com
+DOMAIN-KEYWORD,openai
+# Голосовой режим
+DOMAIN-SUFFIX,livekit.cloud

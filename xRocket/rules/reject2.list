@@ -2,7 +2,6 @@ DOMAIN-SUFFIX,du-app.cn-hangzhou.log.aliyuncs.com
 DOMAIN-SUFFIX,adtscriptshark.com
 DOMAIN-SUFFIX,appscriptshark.com
 DOMAIN-SUFFIX,analytics.sports.ru
-DOMAIN-SUFFIX,adtscriptshark.com
 DOMAIN-SUFFIX,appcriptshark.com
 DOMAIN-SUFFIX,growup-inpp-code.com
 DOMAIN-SUFFIX,support0.dfaklj.tech
@@ -16,11 +15,11 @@ DOMAIN-SUFFIX,s.w-x.co
 DOMAIN-SUFFIX,mobile.useinsider.com
 DOMAIN-SUFFIX,rcc.piojm.tech
 DOMAIN-SUFFIX,mainad-codpp.com
-DOMAIN-SUFFIX,mobile-5425.api.privacy-center.org 
-DOMAIN-SUFFIX,sdk.privacy-center.org 
-DOMAIN-SUFFIX,app.adjust.world 
-DOMAIN-SUFFIX,mobile-collector.newrelic.com  
-DOMAIN-SUFFIX,support0.bigo.sg 
+DOMAIN-SUFFIX,mobile-5425.api.privacy-center.org
+DOMAIN-SUFFIX,sdk.privacy-center.org
+DOMAIN-SUFFIX,app.adjust.world
+DOMAIN-SUFFIX,mobile-collector.newrelic.com
+DOMAIN-SUFFIX,support0.bigo.sg
 DOMAIN-SUFFIX,conf.piojm.tech
 DOMAIN-SUFFIX,report.appmetrica.yandex.net
 DOMAIN-SUFFIX,avatars.mds.yandex.net
@@ -33,6 +32,4 @@ DOMAIN-SUFFIX,biocdn.net
 DOMAIN-SUFFIX,huffson-derivery.com
 DOMAIN-SUFFIX,c.datpix.net
 DOMAIN-SUFFIX,hgbnr.com
-DOMAIN-SUFFIX,hg-bn.con
-DOMAIN-SUFFIX,mainad-codpp.con
 URL-REGEX,^https?:\/\/.+365scores\.com.+(ads|Ads|ADS).*

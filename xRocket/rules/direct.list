@@ -6,13 +6,13 @@ DOMAIN-KEYWORD,1drv
 DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,mail.ru
 DOMAIN-KEYWORD,yandex
+DOMAIN-KEYWORD,ozon
 #DOMAIN-KEYWORD,spotify
 #DOMAIN-KEYWORD,-spotify-com
 DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
 DOMAIN-SUFFIX,linkmessenger.me
-DOMAIN-SUFFIX,updates2.linkmessenger.me
 #DOMAIN-SUFFIX,github.com
 #DOMAIN-SUFFIX,trendyol.com
 DOMAIN-SUFFIX,mail.me
@@ -37,11 +37,7 @@ DOMAIN-SUFFIX,webmoney.ru
 DOMAIN-SUFFIX,yoomoney.ru
 #DOMAIN-SUFFIX,spoti.fi
 DOMAIN-SUFFIX,imgsmail.ru
-DOMAIN-SUFFIX,mycdn.me
 DOMAIN-SUFFIX,icloud.com
-DOMAIN-SUFFIX,fmfmobile.icloud.com
-DOMAIN-SUFFIX,fmipmobile.icloud.com
-DOMAIN-SUFFIX,statici.icloud.com
 DOMAIN-SUFFIX,apple.com
 DOMAIN-SUFFIX,apple.news
 DOMAIN-SUFFIX,applemusic.com
@@ -49,4 +45,3 @@ DOMAIN-SUFFIX,apple-dns.net
 DOMAIN-SUFFIX,appsto.re
 DOMAIN-SUFFIX,appstore.com
 DOMAIN,3dnews.ru
-GEOIP,TM

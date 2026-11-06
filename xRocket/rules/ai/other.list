@@ -1,0 +1,16 @@
+# Другие ИИ-сервисы
+# Perplexity
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,pplx.ai
+# Grok / xAI
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,x.ai
+# Microsoft Copilot (стоит выше правила "microsoft -> DIRECT")
+DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,copilot.cloud.microsoft
+# DeepSeek
+DOMAIN-SUFFIX,deepseek.com
+# Mistral
+DOMAIN-SUFFIX,mistral.ai
+# Meta AI
+DOMAIN-SUFFIX,meta.ai

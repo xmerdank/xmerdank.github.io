@@ -1,25 +1,26 @@
+#!url=https://xmerdank.github.io/xRocket/modules/youtube/YouTube.Enhance.sgmodule
 #!name=Улучшение YouTube (Музыка)
-#!desc=Для Youtube и музыки с YouTube
-#!arguments=Кнопка блокировки загрузки: true, Кнопка выбора блока: true, Язык перевода субтитров: zh-Hans, Язык перевода текста: zh-Hans, Механизм выполнения скриптов: jsc, Включить режим отладки: false
-#!arguments-desc=- Параметры защиты: [true, false] \n- Параметры перевода: [код языка, выкл.] \n- Механизм сценариев: [auto, jsc, webview]\n\n1. Код языка соответствует Google Translate Коды языков, отключите перевод, если поле выключено.\n2. Рекомендуется использовать движок jsc, но вы все равно можете переключиться на веб-просмотр, чтобы испытать новые функции Surge.\n3. Включите режим отладки, чтобы выводить больше журналов.
+#!desc=Убирает рекламу в YouTube и YouTube Music, включает PiP и фоновое воспроизведение. Скрипты загружаются напрямую у автора (Maasea).
+#!arguments=Скрыть кнопку загрузки:true,Скрыть кнопку выбора:true,Скрыть кнопку Shorts:false,Язык перевода субтитров:off,Режим отладки:false
+#!arguments-desc=- Кнопки: [true, false]\n- Язык перевода: код языка Google Translate (ru, en, tk ...) или off — выключить перевод\n- Режим отладки: подробные логи скрипта
 
 # > Примечание
-# Youtube картинка в картинке и фоновое воспроизведение отключены в клиенте соответственно
+# Картинка в картинке и фоновое воспроизведение включаются в самом клиенте YouTube:
 # - Настройки -> Общие -> Картинка в картинке
 # - Настройки -> Фоновое воспроизведение и загрузки -> Фоновое воспроизведение
-
+#
+# > Источник: https://github.com/Maasea/sgmodule (YouTube.Enhance.sgmodule)
+# Скрипты подключены напрямую из репозитория автора и обновляются автоматически.
 
 [Rule]
-AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+# QUIC обходит HTTPS-расшифровку, поэтому для YouTube он запрещается — приложение переходит на TCP
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
 
 [Script]
-youtube.request = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine="jsc",script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.request.preview.js
-youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch),requires-body=1,max-size=-1,binary-body-mode=1,engine="jsc",script-path=https://xmerdank.github.io/xRocket/modules/youtube/youtube.response.preview.js,argument="{"lyricLang":"ru-RU","captionLang":"ru-RU","blockUpload":true,"immersive":true,"debug":false}"
-
-
-[Map Local]
-^https?:\/\/redirector\.googlevideo\.com\/initplayback data="https://xmerdank.github.io/xRocket/modules/youtube/blank.txt"
+youtube.response = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/(youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch|log_event|config))(\?(.*))?$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js,argument="{"captionLang":"{{{Язык перевода субтитров}}}","blockUpload":{{{Скрыть кнопку загрузки}}},"blockImmersive":{{{Скрыть кнопку выбора}}},"blockShorts":{{{Скрыть кнопку Shorts}}},"debug":{{{Режим отладки}}}}"
+youtube.request.init = type=http-request,pattern=^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&ack.*,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.request.js,argument="{"captionLang":"{{{Язык перевода субтитров}}}"}"
+youtube.request.log_event = type=http-request,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/log_event,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.request.js
 
 [MITM]
-hostname = %APPEND% redirector.googlevideo.com, youtubei.googleapis.com
+hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com
