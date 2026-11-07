@@ -38,4 +38,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add xRocket/rules/reject.list xRocket/rules/reject.txt
           git commit -m "Обновление списков блокировки $(date -u +%Y-%m-%d)"
+          git pull --rebase
           git push

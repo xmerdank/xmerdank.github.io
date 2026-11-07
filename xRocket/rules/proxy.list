@@ -89,6 +89,8 @@ DOMAIN-SUFFIX,oauthaccountmanager.googleapis.com
 # Gmail: предпросмотр и загрузка вложений (остальной Google идёт напрямую через direct.list)
 DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,usercontent.google.com
+# Интернет-магазин Chrome (заблокирован, а остальной Google идёт напрямую)
+DOMAIN-SUFFIX,chromewebstore.google.com
 
 
 ####### Заблокированы в TM, но попадали под DIRECT-правила (google / yandex / appcenter.ms) #######

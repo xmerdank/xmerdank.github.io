@@ -14,6 +14,8 @@ DOMAIN-SUFFIX,saray.tm
 DOMAIN-SUFFIX,belet.tm
 DOMAIN-SUFFIX,tmcell.tm
 DOMAIN-SUFFIX,telecom.tm
+DOMAIN-SUFFIX,sanly.tm
+DOMAIN-SUFFIX,rysgalbank.tm
 
 # Туркменские сайты на других доменах
 DOMAIN-SUFFIX,tmcars.info
@@ -29,6 +31,7 @@ DOMAIN-SUFFIX,belet.me
 DOMAIN-SUFFIX,beletapis.com
 DOMAIN-SUFFIX,tmstart.com
 DOMAIN-SUFFIX,beletvideo.com
+DOMAIN-SUFFIX,beletfilm.com
 DOMAIN-SUFFIX,gerek.co
 DOMAIN-SUFFIX,aktam.info
 DOMAIN-SUFFIX,markayoly.com
@@ -39,6 +42,7 @@ DOMAIN-SUFFIX,ynamdar.com
 DOMAIN-SUFFIX,arzuw.news
 DOMAIN-SUFFIX,turkmenportal.com
 DOMAIN-SUFFIX,agts.tv
+DOMAIN-SUFFIX,sumbar-computer.com
 
 ###### Туркменские сети (напрямую) ######
 # Любой сайт или сервер, который физически находится в сети туркменского оператора, пойдёт напрямую —
