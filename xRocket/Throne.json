@@ -5,12 +5,6 @@
   "default_outbound": "proxy",
   "rules": [
     {
-      "name": "DNS",
-      "type": "custom",
-      "protocol": "dns",
-      "action": "hijack-dns"
-    },
-    {
       "name": "QUIC → блок",
       "type": "custom",
       "network": "udp",
@@ -80,9 +74,6 @@
       "domain_keyword": [
         "openai"
       ],
-      "rule_set": [
-        "geosite-openai"
-      ],
       "action": "route",
       "outbound": "proxy"
     },
@@ -95,9 +86,6 @@
         "claude.com",
         "claudeusercontent.com",
         "clau.de"
-      ],
-      "rule_set": [
-        "geosite-anthropic"
       ],
       "action": "route",
       "outbound": "direct"
@@ -123,9 +111,6 @@
         "jules.google",
         "deepmind.google",
         "deepmind.com"
-      ],
-      "rule_set": [
-        "geosite-google-gemini"
       ],
       "action": "route",
       "outbound": "direct"
@@ -278,7 +263,6 @@
         "geosite-facebook",
         "geosite-youtube",
         "geosite-twitter",
-        "geosite-tiktok",
         "geosite-github",
         "geosite-vk"
       ],
@@ -329,9 +313,6 @@
       ],
       "domain_keyword": [
         "-spotify-com"
-      ],
-      "rule_set": [
-        "geosite-spotify"
       ],
       "action": "route",
       "outbound": "proxy"
@@ -451,8 +432,7 @@
         "geosite-google",
         "geosite-yandex",
         "geosite-mailru",
-        "geosite-microsoft",
-        "geosite-ozon"
+        "geosite-microsoft"
       ],
       "action": "route",
       "outbound": "direct"

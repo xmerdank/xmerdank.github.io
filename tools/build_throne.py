@@ -11,7 +11,10 @@
 
 Порядок правил повторяет xRules.conf: реклама → ИИ → VPN → Apple → Spotify → Туркменистан → напрямую,
 всё остальное — через VPN (default_outbound = proxy).
-Встроенные наборы geosite-*/geoip-* Throne скачивает сам (MetaCubeX/meta-rules-dat).
+Встроенные наборы geosite-*/geoip-* Throne скачивает сам (MetaCubeX/meta-rules-dat) через зеркало
+jsDelivr (Cloudflare), которое в TM работает плохо. Если набор не скачался, sing-box в Throne
+перестаёт отвечать на DNS — интернета нет совсем (проверено 2026-11-07). Поэтому используются ТОЛЬКО
+наборы, которые уже были в рабочем профиле (KNOWN_RULE_SETS); новые не добавлять без проверки.
 Правила, которых нет в sing-box (IP-ASN, URL-REGEX), пропускаются: туркменские сети
 покрыты диапазонами IP и набором geoip-tm.
 """
@@ -31,6 +34,14 @@ FIELD = {
     "IP-CIDR6": "ip_cidr",
 }
 SKIPPED_TYPES = {"IP-ASN", "URL-REGEX", "USER-AGENT", "GEOIP"}
+
+# Наборы, которые уже были в рабочем профиле Throne пользователя и точно скачаны (см. docstring)
+KNOWN_RULE_SETS = {
+    "geosite-category-ads-all", "geoip-tm",
+    "geosite-google", "geosite-yandex", "geosite-mailru", "geosite-microsoft",
+    "geosite-whatsapp", "geosite-telegram", "geosite-instagram", "geosite-facebook",
+    "geosite-youtube", "geosite-github", "geosite-twitter", "geosite-apple", "geosite-vk",
+}
 
 
 def read_list(*names: str) -> dict:
@@ -62,6 +73,9 @@ def rule(name: str, outbound: str | None = None, action: str = "route",
         if values:
             obj[key] = values
     if rule_set:
+        unknown = set(rule_set) - KNOWN_RULE_SETS
+        if unknown:
+            sys.exit(f"Ошибка: в правиле «{name}» непроверенные наборы {sorted(unknown)} — см. KNOWN_RULE_SETS")
         obj["rule_set"] = rule_set
     obj["action"] = action
     if action == "route":
@@ -76,26 +90,23 @@ def main():
         except Exception:
             pass
     rules = [
-        rule("DNS", action="hijack-dns", protocol="dns"),
         # QUIC (HTTP/3) — браузеры перейдут на TCP; через VPN так стабильнее
         rule("QUIC → блок", action="reject", network="udp", port=[443]),
         rule("Реклама → блок", action="reject",
              rule_set=["geosite-category-ads-all"], **read_list("reject2.list")),
-        rule("ChatGPT → VPN", "proxy", rule_set=["geosite-openai"], **read_list("ai/chatgpt.list")),
-        rule("Claude → напрямую (отключить = через VPN)", "direct",
-             rule_set=["geosite-anthropic"], **read_list("ai/claude.list")),
-        rule("Gemini → напрямую (отключить = через VPN)", "direct",
-             rule_set=["geosite-google-gemini"], **read_list("ai/gemini.list")),
+        rule("ChatGPT → VPN", "proxy", **read_list("ai/chatgpt.list")),
+        rule("Claude → напрямую (отключить = через VPN)", "direct", **read_list("ai/claude.list")),
+        rule("Gemini → напрямую (отключить = через VPN)", "direct", **read_list("ai/gemini.list")),
         rule("ИИ прочие → VPN", "proxy", **read_list("ai/other.list")),
         rule("VPN", "proxy",
              rule_set=["geosite-telegram", "geosite-whatsapp", "geosite-instagram", "geosite-facebook",
-                       "geosite-youtube", "geosite-twitter", "geosite-tiktok", "geosite-github", "geosite-vk"],
+                       "geosite-youtube", "geosite-twitter", "geosite-github", "geosite-vk"],
              **read_list("proxy.list")),
         rule("Apple → напрямую (отключить = через VPN)", "direct", **read_list("apple.list")),
-        rule("Spotify → VPN", "proxy", rule_set=["geosite-spotify"], **read_list("spotify.list")),
+        rule("Spotify → VPN", "proxy", **read_list("spotify.list")),
         rule("Туркменистан → напрямую", "direct", rule_set=["geoip-tm"], **read_list("tmdirect.list")),
         rule("Напрямую", "direct",
-             rule_set=["geosite-google", "geosite-yandex", "geosite-mailru", "geosite-microsoft", "geosite-ozon"],
+             rule_set=["geosite-google", "geosite-yandex", "geosite-mailru", "geosite-microsoft"],
              **read_list("direct.list")),
     ]
     profile = {
