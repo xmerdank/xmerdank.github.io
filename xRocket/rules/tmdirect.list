@@ -1,6 +1,19 @@
 ###### Туркменские сайты (напрямую) ######
-# Все домены зоны .tm (заменяет com.tm, gov.tm, edu.tm, mil.tm, co.tm, net.tm, saray.tm, belet.tm, tmcell.tm, telecom.tm ...)
-DOMAIN-SUFFIX,tm
+# Зоны национального регистратора Turkmendomain (tmdomain.com.tm) — только туркменские организации.
+# Вся зона .tm целиком НЕ подходит: example.tm продаёт и международный регистратор NIC.TM кому угодно.
+DOMAIN-SUFFIX,com.tm
+DOMAIN-SUFFIX,co.tm
+DOMAIN-SUFFIX,net.tm
+DOMAIN-SUFFIX,gov.tm
+DOMAIN-SUFFIX,edu.tm
+DOMAIN-SUFFIX,mil.tm
+
+# Туркменские сервисы на .tm второго уровня
+DOMAIN-SUFFIX,turkmenistanairlines.tm
+DOMAIN-SUFFIX,saray.tm
+DOMAIN-SUFFIX,belet.tm
+DOMAIN-SUFFIX,tmcell.tm
+DOMAIN-SUFFIX,telecom.tm
 
 # Туркменские сайты на других доменах
 DOMAIN-SUFFIX,tmcars.info
@@ -29,7 +42,7 @@ DOMAIN-SUFFIX,agts.tv
 
 ###### Туркменские сети (напрямую) ######
 # Любой сайт или сервер, который физически находится в сети туркменского оператора, пойдёт напрямую —
-# даже если его домена нет в списках выше. Источник: RIPE NCC (stat.ripe.net), проверено 2026-11-07.
+# даже если его домена нет в списках выше (например, новый туркменский сайт на example.tm или .com). Источник: RIPE NCC (stat.ripe.net), проверено 2026-11-07.
 
 # По номеру автономной системы (ASN) — охватывает все сети оператора, включая новые
 IP-ASN,20661
