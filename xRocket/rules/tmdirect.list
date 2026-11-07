@@ -1,9 +1,12 @@
-DOMAIN-SUFFIX,turkmenistanairlines.tm
+###### Туркменские сайты (напрямую) ######
+# Все домены зоны .tm (заменяет com.tm, gov.tm, edu.tm, mil.tm, co.tm, net.tm, saray.tm, belet.tm, tmcell.tm, telecom.tm ...)
+DOMAIN-SUFFIX,tm
+
+# Туркменские сайты на других доменах
 DOMAIN-SUFFIX,tmcars.info
 DOMAIN-SUFFIX,tapgo.biz
 DOMAIN-SUFFIX,alibazar.info
 DOMAIN-SUFFIX,nesipetsin.info
-DOMAIN-SUFFIX,saray.tm
 DOMAIN-SUFFIX,archalyk.com
 DOMAIN-SUFFIX,rahat.biz
 DOMAIN-SUFFIX,sanlymarket.com
@@ -12,7 +15,6 @@ DOMAIN-SUFFIX,belgilabs.com
 DOMAIN-SUFFIX,belet.me
 DOMAIN-SUFFIX,beletapis.com
 DOMAIN-SUFFIX,tmstart.com
-DOMAIN-SUFFIX,belet.tm
 DOMAIN-SUFFIX,beletvideo.com
 DOMAIN-SUFFIX,gerek.co
 DOMAIN-SUFFIX,aktam.info
@@ -24,31 +26,41 @@ DOMAIN-SUFFIX,ynamdar.com
 DOMAIN-SUFFIX,arzuw.news
 DOMAIN-SUFFIX,turkmenportal.com
 DOMAIN-SUFFIX,agts.tv
-DOMAIN-SUFFIX,tmcell.tm
-DOMAIN-SUFFIX,telecom.tm
-DOMAIN-SUFFIX,com.tm
-DOMAIN-SUFFIX,gov.tm
-DOMAIN-SUFFIX,edu.tm
-DOMAIN-SUFFIX,mil.tm
-DOMAIN-SUFFIX,co.tm
-DOMAIN-SUFFIX,net.tm
 
-# ----- Turkmenhemrasy -----
-IP-CIDR,185.246.72.0/22
+###### Туркменские сети (напрямую) ######
+# Любой сайт или сервер, который физически находится в сети туркменского оператора, пойдёт напрямую —
+# даже если его домена нет в списках выше. Источник: RIPE NCC (stat.ripe.net), проверено 2026-11-07.
 
-# ----- AGTS -----
-IP-CIDR,93.171.220.0/22
-IP-CIDR,95.47.57.0/24
+# По номеру автономной системы (ASN) — охватывает все сети оператора, включая новые
+IP-ASN,20661
+# ^ Türkmentelekom
+IP-ASN,59974
+# ^ TMCELL (Altyn Asyr)
+IP-ASN,51495
+# ^ AGTS — Aşgabat şäher telefon ulgamy
+IP-ASN,205471
+# ^ AGTS CDMA
+IP-ASN,204579
+# ^ Türkmen Hemrasy
+IP-ASN,219194
+# ^ Turkmendomain
+IP-ASN,215487
+# ^ Tehno Merkez
+IP-ASN,201558
+# ^ Türkmenistanyň Daşary ykdysady iş banky
 
-# ----- TMCELL -----
-IP-CIDR,93.171.174.0/24
-IP-CIDR,185.69.186.0/24
-
-# ----- Telecom -----
+# Те же сети по диапазонам — запасной вариант, если база ASN в приложении устарела
 IP-CIDR,95.85.96.0/19
 IP-CIDR,103.220.0.0/22
 IP-CIDR,119.235.112.0/20
 IP-CIDR,177.93.143.0/24
-IP-CIDR,185.69.184.0/24
+IP-CIDR,185.69.184.0/22
+IP-CIDR,185.246.72.0/22
 IP-CIDR,216.250.8.0/21
 IP-CIDR,217.174.224.0/20
+IP-CIDR,77.83.59.0/24
+IP-CIDR,194.117.52.192/26
+IP-CIDR,217.65.78.0/24
+IP-CIDR,93.171.220.0/22
+# TMCELL: сеть арендована у чешской ALFA TELECOM, поэтому по ASN не определяется — только по диапазону
+IP-CIDR,93.171.174.0/24

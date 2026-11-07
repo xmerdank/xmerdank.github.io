@@ -22,7 +22,6 @@ DOMAIN-SUFFIX,mobile-collector.newrelic.com
 DOMAIN-SUFFIX,support0.bigo.sg
 DOMAIN-SUFFIX,conf.piojm.tech
 DOMAIN-SUFFIX,report.appmetrica.yandex.net
-DOMAIN-SUFFIX,avatars.mds.yandex.net
 DOMAIN-SUFFIX,strm.yandex.ru
 DOMAIN-SUFFIX,hunter-hub.com
 DOMAIN-SUFFIX,budvawshes.ru
@@ -32,4 +31,7 @@ DOMAIN-SUFFIX,biocdn.net
 DOMAIN-SUFFIX,huffson-derivery.com
 DOMAIN-SUFFIX,c.datpix.net
 DOMAIN-SUFFIX,hgbnr.com
+DOMAIN-SUFFIX,app-analytics-services.com
+DOMAIN-SUFFIX,launches.appsflyersdk.com
+DOMAIN-SUFFIX,moloco.com
 URL-REGEX,^https?:\/\/.+365scores\.com.+(ads|Ads|ADS).*

@@ -91,6 +91,14 @@ DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,usercontent.google.com
 
 
+####### Заблокированы в TM, но попадали под DIRECT-правила (google / yandex / appcenter.ms) #######
+# По логам 2026-11-07: местный DNS отвечает 127.0.0.1, прямое соединение не работает
+DOMAIN-SUFFIX,csp.withgoogle.com
+DOMAIN-SUFFIX,naydex.net
+DOMAIN-SUFFIX,ap.yandex-net.ru
+DOMAIN-SUFFIX,in.appcenter.ms
+
+
 ####### Vkontakte #######
 DOMAIN-SUFFIX,mvk.com
 DOMAIN-SUFFIX,userapi.com
