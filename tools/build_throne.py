@@ -15,6 +15,9 @@
 jsDelivr (Cloudflare), которое в TM работает плохо, а DNS-правила Throne объединяют наборы из всех
 правил: один незагруженный набор ломает DNS для всех доменов из профиля (проверено 2026-11-07 —
 не открывалось ничего, что попадало под правила). Всё задаётся доменами и диапазонами из наших списков.
+Правила работают по доменам, поэтому в Throne должно быть включено «Обратное сопоставление
+(Reverse Mapping)» или FakeIP: в режиме TUN Chrome шифрует имя сайта (ECH), и без этого Throne
+видит только IP — все правила по доменам молча не срабатывают (проверено по журналу 2026-11-07).
 Правила, которых нет в sing-box (IP-ASN, URL-REGEX), пропускаются: туркменские сети
 покрыты диапазонами IP из tmdirect.list.
 """
@@ -85,8 +88,6 @@ def main():
         except Exception:
             pass
     rules = [
-        # QUIC (HTTP/3) — браузеры перейдут на TCP; через VPN так стабильнее
-        rule("QUIC → блок", action="reject", network="udp", port=[443]),
         rule("Реклама → блок", action="reject", **read_list("reject2.list")),
         rule("ChatGPT → VPN", "proxy", **read_list("ai/chatgpt.list")),
         rule("Claude → напрямую (отключить = через VPN)", "direct", **read_list("ai/claude.list")),

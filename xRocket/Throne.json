@@ -5,15 +5,6 @@
   "default_outbound": "proxy",
   "rules": [
     {
-      "name": "QUIC → блок",
-      "type": "custom",
-      "network": "udp",
-      "port": [
-        443
-      ],
-      "action": "reject"
-    },
-    {
       "name": "Реклама → блок",
       "type": "custom",
       "domain_suffix": [
