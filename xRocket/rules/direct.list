@@ -6,13 +6,10 @@ DOMAIN-KEYWORD,1drv
 DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,mail.ru
 DOMAIN-KEYWORD,yandex
-DOMAIN-KEYWORD,ozon
-#DOMAIN-KEYWORD,spotify
-#DOMAIN-KEYWORD,-spotify-com
 DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
-# Apple вынесен в apple.list (отдельный переключатель)
+# Apple и Spotify вынесены в apple.list и spotify.list (отдельные переключатели)
 DOMAIN-SUFFIX,linkmessenger.me
 #DOMAIN-SUFFIX,github.com
 #DOMAIN-SUFFIX,trendyol.com
@@ -36,7 +33,13 @@ DOMAIN-SUFFIX,ivi.ru
 DOMAIN-SUFFIX,wordpress.com
 DOMAIN-SUFFIX,webmoney.ru
 DOMAIN-SUFFIX,yoomoney.ru
-#DOMAIN-SUFFIX,spoti.fi
 DOMAIN-SUFFIX,imgsmail.ru
 DOMAIN,3dnews.ru
 DOMAIN-SUFFIX,ya.ru
+
+###### Ozon ######
+DOMAIN-SUFFIX,ozon.ru
+DOMAIN-SUFFIX,ozone.ru
+DOMAIN-SUFFIX,ozonusercontent.com
+DOMAIN-SUFFIX,ozon.kz
+DOMAIN-SUFFIX,ozon.by

@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 RULES = ROOT / "xRocket" / "rules"
 
 # Домены из этих списков не должны блокироваться (иначе REJECT, стоящий выше, их перекроет)
-PROTECTED_LISTS = ["proxy.list", "direct.list", "tmdirect.list", "apple.list",
+PROTECTED_LISTS = ["proxy.list", "direct.list", "tmdirect.list", "apple.list", "spotify.list",
                    "ai/chatgpt.list", "ai/claude.list", "ai/gemini.list", "ai/other.list"]
 
 # Служебные имена из шапки hosts-файла
