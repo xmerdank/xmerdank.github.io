@@ -34,4 +34,10 @@ DOMAIN-SUFFIX,hgbnr.com
 DOMAIN-SUFFIX,app-analytics-services.com
 DOMAIN-SUFFIX,launches.appsflyersdk.com
 DOMAIN-SUFFIX,moloco.com
+DOMAIN-SUFFIX,app-ads-services.com
+DOMAIN-SUFFIX,axonixgrid.com
+DOMAIN-SUFFIX,mraid.bigo.sg
+DOMAIN-SUFFIX,rtb-stack.com
+DOMAIN-SUFFIX,impression.appmetrica.yandex.com
+DOMAIN-SUFFIX,skadsdk.appsflyersdk.com
 URL-REGEX,^https?:\/\/.+365scores\.com.+(ads|Ads|ADS).*

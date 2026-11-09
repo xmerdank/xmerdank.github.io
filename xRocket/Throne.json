@@ -43,7 +43,13 @@
         "hgbnr.com",
         "app-analytics-services.com",
         "launches.appsflyersdk.com",
-        "moloco.com"
+        "moloco.com",
+        "app-ads-services.com",
+        "axonixgrid.com",
+        "mraid.bigo.sg",
+        "rtb-stack.com",
+        "impression.appmetrica.yandex.com",
+        "skadsdk.appsflyersdk.com"
       ],
       "action": "reject"
     },

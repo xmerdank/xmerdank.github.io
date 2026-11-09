@@ -1,0 +1,10 @@
+# FaceTime и iMessage — всегда напрямую, независимо от группы Apple (стоит выше apple.list).
+# В TM эти адреса не заблокированы: DNS отвечает настоящими адресами Apple (логи 2026-11-07…09).
+# Вложения iMessage (icloud-content.com) идут вместе с iCloud по группе Apple.
+
+# Push-сервис Apple: доставка iMessage и входящих звонков FaceTime (и уведомлений всех приложений)
+DOMAIN-SUFFIX,push.apple.com
+# Регистрация номера и Apple ID в iMessage и FaceTime
+DOMAIN-SUFFIX,ess.apple.com
+# Звук и видео FaceTime идут на серверы Apple по IP-адресу, без имени домена
+IP-CIDR,17.0.0.0/8,no-resolve
