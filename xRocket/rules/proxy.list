@@ -85,7 +85,9 @@ DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN-SUFFIX,youtu.be
 DOMAIN-SUFFIX,googlevideo.com
-DOMAIN-SUFFIX,oauthaccountmanager.googleapis.com
+# oauthaccountmanager.googleapis.com убран (2026-11-09): вход в аккаунт Google шёл наполовину через VPN
+# (oauthaccountmanager), наполовину напрямую (oauth2) — Gemini зацикливался на обновлении входа.
+# В TM домен не заблокирован, поэтому теперь весь вход в Google идёт напрямую.
 # Gmail: предпросмотр и загрузка вложений (остальной Google идёт напрямую через direct.list)
 DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,usercontent.google.com
@@ -99,6 +101,14 @@ DOMAIN-SUFFIX,csp.withgoogle.com
 DOMAIN-SUFFIX,naydex.net
 DOMAIN-SUFFIX,ap.yandex-net.ru
 DOMAIN-SUFFIX,in.appcenter.ms
+# По логам 2026-11-09: Google Задачи, Meet, Chat и служебные адреса Google (все DNS в TM отвечают 127.0.0.1)
+DOMAIN-SUFFIX,taskassist-pa.googleapis.com
+DOMAIN-SUFFIX,meetings.googleapis.com
+DOMAIN-SUFFIX,chat.google.com
+DOMAIN-SUFFIX,growth-pa.googleapis.com
+DOMAIN-SUFFIX,peoplestack-pa.googleapis.com
+DOMAIN-SUFFIX,firebaseremoteconfigrealtime.googleapis.com
+DOMAIN-SUFFIX,dns.google.com
 
 
 ####### Vkontakte #######
