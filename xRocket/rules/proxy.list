@@ -14,6 +14,10 @@ DOMAIN-SUFFIX,sequoia.apple.com
 DOMAIN-SUFFIX,amp-api-edge.apps.apple.com
 DOMAIN-SUFFIX,sandbox.itunes.apple.com
 DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
+# Обход ошибки Shadowrocket: на домашнем Wi-Fi он проверяет IPv6 через gateway.icloud.com, запоминает
+# IPv6-адрес и шлёт прямые соединения по IPv6, которого нет -> "timed out" (90 из 90, 2026-11-10).
+# Через VPN адрес ищет сервер. Убрать, когда IPv6 в роутере будет выключен или заработает.
+DOMAIN,gateway.icloud.com
 
 
 ####### Meta #######
@@ -138,6 +142,8 @@ DOMAIN-SUFFIX,nothingtech.link
 DOMAIN-SUFFIX,jsdelivr.net
 # 3DNews: DNS отвечает, но соединение напрямую сбрасывается ("Connection refused", живой лог 2026-11-10). Был в direct.list.
 DOMAIN-SUFFIX,3dnews.ru
+# Mail.ru: то же самое, 104 из 104 прямых соединений сброшены (Safari, 2026-11-10). Был в direct.list (DOMAIN-KEYWORD).
+DOMAIN-SUFFIX,mail.ru
 
 
 ####### Vkontakte #######

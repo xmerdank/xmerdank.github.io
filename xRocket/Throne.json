@@ -207,6 +207,7 @@
         "nothingtech.link",
         "jsdelivr.net",
         "3dnews.ru",
+        "mail.ru",
         "mvk.com",
         "userapi.com",
         "vk-cdn.me",
@@ -238,6 +239,9 @@
         "lcwaikiki.com",
         "ihtier.net",
         "lsapp.eu"
+      ],
+      "domain": [
+        "gateway.icloud.com"
       ],
       "domain_keyword": [
         "facebook",
@@ -393,7 +397,6 @@
         "gstatic",
         "1drv",
         "microsoft",
-        "mail.ru",
         "yandex",
         "google"
       ],
