@@ -17,6 +17,9 @@ DOMAIN-KEYWORD,whatsapp
 DOMAIN-KEYWORD,instagram
 DOMAIN-SUFFIX,fb.com
 DOMAIN-SUFFIX,fb.me
+# CDN фото и видео Facebook/Instagram/Messenger
+DOMAIN-SUFFIX,fbcdn.net
+DOMAIN-SUFFIX,fbsbx.com
 
 
 ####### Telegram #######
@@ -85,6 +88,8 @@ DOMAIN-SUFFIX,yt.be
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN-SUFFIX,youtu.be
 DOMAIN-SUFFIX,googlevideo.com
+# Аватарки и обложки YouTube (yt3.ggpht.com) — в TM заблокированы, под правило "google" не попадают
+DOMAIN-SUFFIX,ggpht.com
 # oauthaccountmanager.googleapis.com убран (2026-11-09): вход в аккаунт Google шёл наполовину через VPN
 # (oauthaccountmanager), наполовину напрямую (oauth2) — Gemini зацикливался на обновлении входа.
 # В TM домен не заблокирован, поэтому теперь весь вход в Google идёт напрямую.
@@ -109,6 +114,19 @@ DOMAIN-SUFFIX,growth-pa.googleapis.com
 DOMAIN-SUFFIX,peoplestack-pa.googleapis.com
 DOMAIN-SUFFIX,firebaseremoteconfigrealtime.googleapis.com
 DOMAIN-SUFFIX,dns.google.com
+
+
+####### Заблокированы в TM и шли через "всё остальное" с задержкой ~2 с (логи 2026-11-09/10) #######
+# Местный DNS отвечает 127.0.0.1, Shadowrocket ждёт повтор/запасной DNS и только потом отправляет в VPN.
+# Явное правило отправляет в VPN сразу.
+# Подписки в приложениях (RevenueCat)
+DOMAIN-SUFFIX,revenuecat.com
+# FotMob (футбол)
+DOMAIN-SUFFIX,fotmob.com
+# Nothing X (наушники/телефоны Nothing)
+DOMAIN-SUFFIX,nothingtech.link
+# jsDelivr — библиотеки JS для многих сайтов
+DOMAIN-SUFFIX,jsdelivr.net
 
 
 ####### Vkontakte #######

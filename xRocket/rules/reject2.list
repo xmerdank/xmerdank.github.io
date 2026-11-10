@@ -1,4 +1,3 @@
-DOMAIN-SUFFIX,du-app.cn-hangzhou.log.aliyuncs.com
 DOMAIN-SUFFIX,adtscriptshark.com
 DOMAIN-SUFFIX,appscriptshark.com
 DOMAIN-SUFFIX,analytics.sports.ru
@@ -32,12 +31,15 @@ DOMAIN-SUFFIX,huffson-derivery.com
 DOMAIN-SUFFIX,c.datpix.net
 DOMAIN-SUFFIX,hgbnr.com
 DOMAIN-SUFFIX,app-analytics-services.com
-DOMAIN-SUFFIX,launches.appsflyersdk.com
 DOMAIN-SUFFIX,moloco.com
 DOMAIN-SUFFIX,app-ads-services.com
 DOMAIN-SUFFIX,axonixgrid.com
 DOMAIN-SUFFIX,mraid.bigo.sg
 DOMAIN-SUFFIX,rtb-stack.com
 DOMAIN-SUFFIX,impression.appmetrica.yandex.com
-DOMAIN-SUFFIX,skadsdk.appsflyersdk.com
+DOMAIN-SUFFIX,log.aliyuncs.com
+DOMAIN-SUFFIX,buried-point-img-online.oss-cn-hangzhou.aliyuncs.com
+DOMAIN-SUFFIX,appsflyersdk.com
+DOMAIN-SUFFIX,i18n-pglstatp.com
+DOMAIN-SUFFIX,weborama-tech.ru
 URL-REGEX,^https?:\/\/.+365scores\.com.+(ads|Ads|ADS).*
