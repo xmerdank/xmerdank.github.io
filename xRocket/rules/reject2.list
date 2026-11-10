@@ -42,4 +42,6 @@ DOMAIN-SUFFIX,buried-point-img-online.oss-cn-hangzhou.aliyuncs.com
 DOMAIN-SUFFIX,appsflyersdk.com
 DOMAIN-SUFFIX,i18n-pglstatp.com
 DOMAIN-SUFFIX,weborama-tech.ru
+DOMAIN-SUFFIX,dns.google
+DOMAIN-SUFFIX,dns.google.com
 URL-REGEX,^https?:\/\/.+365scores\.com.+(ads|Ads|ADS).*

@@ -9,6 +9,11 @@ DOMAIN-SUFFIX,downloaddispatch.itunes.apple.com
 #DOMAIN-SUFFIX,push.apple.com
 DOMAIN-SUFFIX,shazam.apple.com
 DOMAIN-SUFFIX,sequoia.apple.com
+# Живой лог Shadowrocket 2026-11-10: напрямую "Connection refused" — в TM заблокированы адреса CDN (Fastly/Akamai)
+# App Store (витрина), покупки в приложениях (sandbox), Apple Карты
+DOMAIN-SUFFIX,amp-api-edge.apps.apple.com
+DOMAIN-SUFFIX,sandbox.itunes.apple.com
+DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
 
 
 ####### Meta #######
@@ -113,7 +118,11 @@ DOMAIN-SUFFIX,chat.google.com
 DOMAIN-SUFFIX,growth-pa.googleapis.com
 DOMAIN-SUFFIX,peoplestack-pa.googleapis.com
 DOMAIN-SUFFIX,firebaseremoteconfigrealtime.googleapis.com
-DOMAIN-SUFFIX,dns.google.com
+# dns.google.com отсюда убран (2026-11-10): через VPN приложение получало адреса Google для страны
+# VPN-сервера и шло к ним напрямую — "Connection refused" (80 раз за 2 минуты). Теперь блокируется в reject2.list.
+# Google Напоминания и трассировка клиентов Google (живой лог 2026-11-10: все DNS отвечают 127.0.0.1)
+DOMAIN-SUFFIX,reminders-pa.googleapis.com
+DOMAIN-SUFFIX,clienttracing-pa.googleapis.com
 
 
 ####### Заблокированы в TM и шли через "всё остальное" с задержкой ~2 с (логи 2026-11-09/10) #######
@@ -127,6 +136,8 @@ DOMAIN-SUFFIX,fotmob.com
 DOMAIN-SUFFIX,nothingtech.link
 # jsDelivr — библиотеки JS для многих сайтов
 DOMAIN-SUFFIX,jsdelivr.net
+# 3DNews: DNS отвечает, но соединение напрямую сбрасывается ("Connection refused", живой лог 2026-11-10). Был в direct.list.
+DOMAIN-SUFFIX,3dnews.ru
 
 
 ####### Vkontakte #######

@@ -51,7 +51,9 @@
         "buried-point-img-online.oss-cn-hangzhou.aliyuncs.com",
         "appsflyersdk.com",
         "i18n-pglstatp.com",
-        "weborama-tech.ru"
+        "weborama-tech.ru",
+        "dns.google",
+        "dns.google.com"
       ],
       "action": "reject"
     },
@@ -141,6 +143,9 @@
         "downloaddispatch.itunes.apple.com",
         "shazam.apple.com",
         "sequoia.apple.com",
+        "amp-api-edge.apps.apple.com",
+        "sandbox.itunes.apple.com",
+        "gspe1-ssl.ls.apple.com",
         "fb.com",
         "fb.me",
         "fbcdn.net",
@@ -195,11 +200,13 @@
         "growth-pa.googleapis.com",
         "peoplestack-pa.googleapis.com",
         "firebaseremoteconfigrealtime.googleapis.com",
-        "dns.google.com",
+        "reminders-pa.googleapis.com",
+        "clienttracing-pa.googleapis.com",
         "revenuecat.com",
         "fotmob.com",
         "nothingtech.link",
         "jsdelivr.net",
+        "3dnews.ru",
         "mvk.com",
         "userapi.com",
         "vk-cdn.me",
@@ -420,9 +427,6 @@
         "ozonusercontent.com",
         "ozon.kz",
         "ozon.by"
-      ],
-      "domain": [
-        "3dnews.ru"
       ],
       "action": "route",
       "outbound": "direct"
