@@ -10,8 +10,6 @@ DOMAIN-KEYWORD,google
 ###### DOMAIN-SUFFIX ######
 # Apple и Spotify вынесены в apple.list и spotify.list (отдельные переключатели)
 DOMAIN-SUFFIX,linkmessenger.me
-#DOMAIN-SUFFIX,github.com
-#DOMAIN-SUFFIX,trendyol.com
 DOMAIN-SUFFIX,mail.me
 DOMAIN-SUFFIX,python.org
 DOMAIN-SUFFIX,pypi.org
@@ -32,7 +30,6 @@ DOMAIN-SUFFIX,ivi.ru
 DOMAIN-SUFFIX,wordpress.com
 DOMAIN-SUFFIX,webmoney.ru
 DOMAIN-SUFFIX,yoomoney.ru
-DOMAIN-SUFFIX,imgsmail.ru
 DOMAIN-SUFFIX,ya.ru
 
 ###### Ozon ######

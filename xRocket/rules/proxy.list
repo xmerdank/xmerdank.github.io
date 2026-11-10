@@ -144,6 +144,8 @@ DOMAIN-SUFFIX,jsdelivr.net
 DOMAIN-SUFFIX,3dnews.ru
 # Mail.ru: то же самое, 104 из 104 прямых соединений сброшены (Safari, 2026-11-10). Был в direct.list (DOMAIN-KEYWORD).
 DOMAIN-SUFFIX,mail.ru
+# Картинки и статика Mail.ru: DNS роутера отвечает 127.0.0.1 (журнал Throne 2026-11-10). Был в direct.list.
+DOMAIN-SUFFIX,imgsmail.ru
 
 
 ####### Vkontakte #######

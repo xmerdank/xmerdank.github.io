@@ -66,6 +66,17 @@ PROFILE_DNS = {
 }
 
 
+def read_domain_set(name: str) -> dict:
+    """Читает DOMAIN-SET Shadowrocket (строки вида .example.com) как domain_suffix."""
+    domains = []
+    for raw in (RULES / name).read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        domains.append(line.lstrip(".").lower())
+    return {"domain_suffix": domains}
+
+
 def only_google(fields: dict) -> dict:
     """Оставляет из полей правила только домены/ключевые слова Google."""
     out = {}
@@ -125,6 +136,9 @@ def main():
             pass
     rules = [
         rule("Реклама → блок", action="reject", **read_list("reject2.list")),
+        # Тот же большой список, что и в Shadowrocket (reject.txt, ~48 тыс. доменов). Отдельным правилом,
+        # чтобы его можно было отключить в Throne, если понадобится, не трогая остальную блокировку.
+        rule("Реклама (большой список) → блок", action="reject", **read_domain_set("reject.txt")),
         rule("ChatGPT → VPN", "proxy", **read_list("ai/chatgpt.list")),
         rule("Claude → напрямую (отключить = через VPN)", "direct", **read_list("ai/claude.list")),
         rule("Gemini → напрямую (отключить = через VPN)", "direct", **read_list("ai/gemini.list")),
@@ -144,7 +158,13 @@ def main():
         "default_outbound": "proxy",
         "rules": rules,
     }
-    OUT.write_text(json.dumps(profile, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    # Без отступов внутри списков файл был бы вдвое больше: каждое правило — одной строкой.
+    head = {k: v for k, v in profile.items() if k != "rules"}
+    text = json.dumps(head, ensure_ascii=False, indent=2)[:-2] + ',\n  "rules": [\n'
+    text += ",\n".join("    " + json.dumps(r, ensure_ascii=False, separators=(",", ":")) for r in rules)
+    text += "\n  ]\n}\n"
+    json.loads(text)  # проверка, что собранный вручную JSON корректен
+    OUT.write_text(text, encoding="utf-8", newline="\n")
     print(f"Готово: {OUT.relative_to(ROOT)} — правил: {len(rules)}")
 
 
