@@ -2,6 +2,16 @@
   "kind": "throne-route-profile",
   "v": 1,
   "name": "xmn",
+  "dns": {
+    "remote_dns": "tls://8.8.8.8",
+    "remote_dns_disable_ipv6": false,
+    "direct_dns": "localhost",
+    "direct_dns_disable_ipv6": true,
+    "dns_final_out": "remote",
+    "enable_dns_routing": true,
+    "fake_dns": true,
+    "fakeip_disable_ipv6": false
+  },
   "default_outbound": "proxy",
   "rules": [
     {
@@ -387,6 +397,18 @@
       ],
       "action": "route",
       "outbound": "direct"
+    },
+    {
+      "name": "Google → VPN (отключить = напрямую)",
+      "type": "custom",
+      "domain_keyword": [
+        "gmail",
+        "recaptcha",
+        "gstatic",
+        "google"
+      ],
+      "action": "route",
+      "outbound": "proxy"
     },
     {
       "name": "Напрямую",

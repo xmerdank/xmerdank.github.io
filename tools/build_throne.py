@@ -15,9 +15,12 @@
 jsDelivr (Cloudflare), которое в TM работает плохо, а DNS-правила Throne объединяют наборы из всех
 правил: один незагруженный набор ломает DNS для всех доменов из профиля (проверено 2026-11-07 —
 не открывалось ничего, что попадало под правила). Всё задаётся доменами и диапазонами из наших списков.
-Правила работают по доменам, поэтому в Throne должно быть включено «Обратное сопоставление
-(Reverse Mapping)» или FakeIP: в режиме TUN Chrome шифрует имя сайта (ECH), и без этого Throne
-видит только IP — все правила по доменам молча не срабатывают (проверено по журналу 2026-11-07).
+Правила работают по доменам, поэтому профиль сам включает FakeIP (объект "dns", см. PROFILE_DNS):
+в режиме TUN Chrome шифрует имя сайта (ECH), и без FakeIP Throne видит только IP — все правила по
+доменам молча не срабатывают (проверено по журналу 2026-11-07).
+Папка Throne должна лежать по пути из латинских букв: при «Строгой маршрутизации» с путём вроде
+X:\\СОФТ\\Throne Windows не узнаёт ThroneCore в исключении брандмауэра и блокирует его собственные
+DNS-запросы к роутеру — не работает ничего «напрямую» (найдено 2026-11-10).
 Правила, которых нет в sing-box (IP-ASN, URL-REGEX), пропускаются: туркменские сети
 покрыты диапазонами IP из tmdirect.list.
 """
@@ -40,6 +43,39 @@ SKIPPED_TYPES = {"IP-ASN", "URL-REGEX", "USER-AGENT", "GEOIP"}
 
 # Скачиваемые наборы правил запрещены (см. docstring). Добавлять сюда только после проверки в TM.
 KNOWN_RULE_SETS: set[str] = set()
+
+# Google на компьютере идёт через VPN отдельным правилом (стоит выше «Напрямую»).
+# Местный DNS (роутер, Туркментелеком) на часть сервисов Google отдаёт адреса, которые в TM
+# заблокированы: mail.google.com -> 142.251.20.x, t0.gstatic.com -> 108.177.14.x — "connection refused"
+# (журнал Throne 2026-11-10). Shadowrocket на телефоне это не задевает так сильно, поэтому в общих
+# списках Google остаётся напрямую. Отключить правило в Throne = Google снова напрямую (правило «Напрямую»).
+GOOGLE_MARKERS = ("google", "gmail", "gstatic", "recaptcha")
+
+# DNS профиля: Throne применяет его вместо глобальных настроек, пока выбран этот профиль.
+# FakeIP обязателен: без него в TUN правила по доменам не срабатывают (Chrome шифрует имя сайта, ECH).
+# IPv6 у прямого DNS выключен: у провайдера IPv6 нет, попытки по IPv6 только множат ошибки в журнале.
+PROFILE_DNS = {
+    "remote_dns": "tls://8.8.8.8",
+    "remote_dns_disable_ipv6": False,
+    "direct_dns": "localhost",
+    "direct_dns_disable_ipv6": True,
+    "dns_final_out": "remote",
+    "enable_dns_routing": True,
+    "fake_dns": True,
+    "fakeip_disable_ipv6": False,
+}
+
+
+def only_google(fields: dict) -> dict:
+    """Оставляет из полей правила только домены/ключевые слова Google."""
+    out = {}
+    for key, values in fields.items():
+        if key == "ip_cidr":
+            continue
+        picked = [v for v in values if any(m in v for m in GOOGLE_MARKERS)]
+        if picked:
+            out[key] = picked
+    return out
 
 
 def read_list(*names: str) -> dict:
@@ -97,12 +133,14 @@ def main():
         rule("Apple → напрямую (отключить = через VPN)", "direct", **read_list("apple.list")),
         rule("Spotify → VPN", "proxy", **read_list("spotify.list")),
         rule("Туркменистан → напрямую", "direct", **read_list("tmdirect.list")),
+        rule("Google → VPN (отключить = напрямую)", "proxy", **only_google(read_list("direct.list"))),
         rule("Напрямую", "direct", **read_list("direct.list")),
     ]
     profile = {
         "kind": "throne-route-profile",
         "v": 1,
         "name": "xmn",
+        "dns": PROFILE_DNS,
         "default_outbound": "proxy",
         "rules": rules,
     }
