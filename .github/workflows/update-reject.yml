@@ -1,4 +1,5 @@
-# Еженедельное обновление рекламных списков (reject.list, reject.txt и профиль Throne) из StevenBlack/hosts.
+# Еженедельное обновление рекламных списков (reject.list, reject.txt и профиль Throne)
+# из StevenBlack/hosts и HaGeZi Multi Light (источники — в tools/build_reject.py, SOURCES).
 # Запуск вручную: вкладка Actions → "Обновление списков блокировки" → Run workflow.
 name: Обновление списков блокировки
 
@@ -24,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Скачать StevenBlack и пересобрать списки
+      - name: Скачать источники и пересобрать списки
         run: python tools/build_reject.py
 
       # Профиль Throne включает тот же большой список. Коммит бота не запускает

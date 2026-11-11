@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Сборка рекламных списков из hosts-файла StevenBlack.
+Сборка рекламных списков из нескольких источников (см. SOURCES) в один список без дублей.
 
 Использование:
-    python tools/build_reject.py                 # скачать свежий StevenBlack (fakenews + gambling)
-    python tools/build_reject.py hosts.txt       # взять локальный hosts-файл
+    python tools/build_reject.py                 # скачать свежие источники (StevenBlack + HaGeZi Light)
+    python tools/build_reject.py hosts.txt       # взять один локальный файл вместо источников
     python tools/build_reject.py xRocket/rules/reject.list   # пересобрать из старого списка
 
 Результат (в xRocket/rules/):
@@ -15,6 +15,16 @@
 поддоменами. Убираются только записи, которые и так покрыты родительским доменом
 (например, ads.example.com при наличии example.com), мусор из шапки hosts-файла
 и домены, которые конфликтуют с proxy/direct списками.
+
+Если список заблокировал что-то нужное — добавить адрес в xRocket/rules/reject-allow.list
+и пересобрать (вкладка Actions → "Обновление списков блокировки" → Run workflow).
+
+Почему именно эти два источника (замер 2026-11-11 по журналам Shadowrocket, 37,5 тыс. соединений):
+StevenBlack блокировал 13,2% соединений, HaGeZi Light — 14,9%, а вместе — 21,1%: они почти не
+пересекаются (StevenBlack сильнее в рекламных сетях приложений, HaGeZi — в трекерах и телеметрии
+TikTok, Trendyol, Яндекса, Apple). Ложных срабатываний в журналах не нашлось.
+Не взяты: HaGeZi Pro (вдвое больше доменов ради +1%), OISD и AdGuard DNS (поверх этой пары
+добавляют меньше 0,5%), 1Hosts и GoodbyeAds (блокируют нужное: вход TikTok, Firebase, картинки AliExpress).
 """
 import re
 import sys
@@ -22,13 +32,20 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-DEFAULT_URL = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts"
+# (название, адрес). Подходят hosts-файлы ("0.0.0.0 домен") и простые списки доменов по одному в строке.
+SOURCES = [
+    ("StevenBlack/hosts (fakenews-gambling)",
+     "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts"),
+    ("HaGeZi Multi Light",
+     "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/light-onlydomains.txt"),
+]
 ROOT = Path(__file__).resolve().parent.parent
 RULES = ROOT / "xRocket" / "rules"
 
 # Домены из этих списков не должны блокироваться (иначе REJECT, стоящий выше, их перекроет)
+# reject-allow.list — ручные исключения: адреса, которые источники блокируют зря.
 PROTECTED_LISTS = ["proxy.list", "direct.list", "tmdirect.list", "apple.list", "spotify.list", "facetime.list",
-                   "ai/chatgpt.list", "ai/claude.list", "ai/gemini.list", "ai/other.list"]
+                   "ai/chatgpt.list", "ai/claude.list", "ai/gemini.list", "ai/other.list", "reject-allow.list"]
 
 # Служебные имена из шапки hosts-файла
 JUNK = {
@@ -37,17 +54,16 @@ JUNK = {
     "ip6-allnodes", "ip6-allrouters", "ip6-allhosts", "0.0.0.0",
 }
 
-MIN_DOMAINS = 20000  # меньше — значит, скачалось что-то не то
+MIN_DOMAINS = 20000  # меньше (в любом из источников или в итоге) — значит, скачалось что-то не то
 
 DOMAIN_RE =re.compile(r"^(?=.{1,253}$)(?!-)[a-z0-9_-]+(\.[a-z0-9_-]+)+$")
 IP_RE = re.compile(r"^\d{1,3}(\.\d{1,3}){3}$")
 
 
-def read_source(arg: str | None) -> str:
-    if arg is None or arg.startswith(("http://", "https://")):
-        url = arg or DEFAULT_URL
-        print(f"Скачиваю {url}")
-        with urllib.request.urlopen(url, timeout=60) as r:
+def read_source(arg: str) -> str:
+    if arg.startswith(("http://", "https://")):
+        print(f"Скачиваю {arg}")
+        with urllib.request.urlopen(arg, timeout=120) as r:
             return r.read().decode("utf-8", "replace")
     return Path(arg).read_text(encoding="utf-8", errors="replace")
 
@@ -106,16 +122,23 @@ def main():
         sys.stderr.reconfigure(encoding="utf-8")
     except Exception:
         pass
-    src = sys.argv[1] if len(sys.argv) > 1 else None
-    domains = parse(read_source(src))
+    sources = [(sys.argv[1], sys.argv[1])] if len(sys.argv) > 1 else SOURCES
+    domains: set[str] = set()
+    for title, src in sources:
+        part = parse(read_source(src))
+        # Защита: если хоть один источник не скачался или пришёл битым, старые списки не трогаем —
+        # иначе список молча сжался бы до одного источника.
+        if len(part) < MIN_DOMAINS:
+            sys.exit(f"Ошибка: «{title}» — всего {len(part)} доменов (минимум {MIN_DOMAINS}). Файлы не изменены.")
+        print(f"  {title}: {len(part)} доменов, новых: {len(part - domains)}")
+        domains |= part
     result, removed = reduce(domains, protected_domains())
-    # Защита: если источник вернул пустой/битый файл, старые списки не трогаем
     if len(result) < MIN_DOMAINS:
         sys.exit(f"Ошибка: получено всего {len(result)} доменов (минимум {MIN_DOMAINS}). Файлы не изменены.")
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     header = [
         "# Реклама, трекеры, вредоносные сайты, fake news, азартные игры",
-        "# Источник: StevenBlack/hosts (fakenews-gambling) — https://github.com/StevenBlack/hosts",
+        "# Источники: " + "; ".join(title for title, _ in sources),
         f"# Собрано: {stamp} скриптом tools/build_reject.py",
         f"# Доменов: {len(result)} (каждый блокируется вместе с поддоменами)",
         "",
@@ -128,7 +151,7 @@ def main():
     print(f"Исходных доменов: {len(domains)}")
     print(f"Итого: {len(result)} (убрано поддоменов-дублей: {len(domains) - len(result) - len(removed)})")
     if removed:
-        print("Исключены, т.к. конфликтуют с proxy/direct:", ", ".join(removed))
+        print("Исключены, т.к. конфликтуют с proxy/direct или стоят в reject-allow.list:", ", ".join(removed))
 
 
 if __name__ == "__main__":
