@@ -127,6 +127,10 @@ DOMAIN-SUFFIX,firebaseremoteconfigrealtime.googleapis.com
 # Google Напоминания и трассировка клиентов Google (живой лог 2026-11-10: все DNS отвечают 127.0.0.1)
 DOMAIN-SUFFIX,reminders-pa.googleapis.com
 DOMAIN-SUFFIX,clienttracing-pa.googleapis.com
+# Google Диск и Meet (журнал Throne 2026-11-11: роутер отвечает 127.0.0.1).
+# Через Диск открывается и предпросмотр вложений Gmail в браузере.
+DOMAIN-SUFFIX,drive.google.com
+DOMAIN-SUFFIX,meet.google.com
 
 
 ####### Заблокированы в TM и шли через "всё остальное" с задержкой ~2 с (логи 2026-11-09/10) #######
