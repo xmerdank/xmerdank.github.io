@@ -1,0 +1,22 @@
+# Телеметрия Windows, Office, Edge и VS Code — блок. Используется только в профиле Throne (компьютер).
+# Только адреса для отправки отчётов и статистики. Обновления Windows, активация, магазин,
+# Defender, OneDrive и настройки Office здесь не блокируются.
+# Каждая строка блокирует домен вместе со всеми поддоменами.
+
+# Основной канал телеметрии Windows и приложений Microsoft (v10/v20/self/mobile/umwatson/browser...).
+# По журналу Throne 2026-11-11 сюда стучатся VS Code и Office (mobile.events.data.microsoft.com).
+DOMAIN-SUFFIX,events.data.microsoft.com
+DOMAIN-SUFFIX,vortex.data.microsoft.com
+DOMAIN-SUFFIX,vortex-win.data.microsoft.com
+# Отчёты об ошибках и диагностика Windows (watson, sqm, oca, telecommand, df...)
+DOMAIN-SUFFIX,telemetry.microsoft.com
+DOMAIN-SUFFIX,watson.microsoft.com
+DOMAIN-SUFFIX,watson.live.com
+# Телеметрия Office, Edge, Skype, Teams (Aria)
+DOMAIN-SUFFIX,pipe.aria.microsoft.com
+DOMAIN-SUFFIX,nexus.officeapps.live.com
+DOMAIN-SUFFIX,nexusrules.officeapps.live.com
+# Телеметрия приложений Windows (Bing-приложения, погода, новости)
+DOMAIN-SUFFIX,telemetry.appex.bing.net
+# Application Insights — телеметрия VS Code и других приложений Microsoft
+DOMAIN-SUFFIX,dc.services.visualstudio.com

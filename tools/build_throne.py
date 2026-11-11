@@ -44,20 +44,22 @@ SKIPPED_TYPES = {"IP-ASN", "URL-REGEX", "USER-AGENT", "GEOIP"}
 # Скачиваемые наборы правил запрещены (см. docstring). Добавлять сюда только после проверки в TM.
 KNOWN_RULE_SETS: set[str] = set()
 
-# Google на компьютере идёт через VPN отдельным правилом (стоит выше «Напрямую»).
-# Местный DNS (роутер, Туркментелеком) на часть сервисов Google отдаёт адреса, которые в TM
-# заблокированы: mail.google.com -> 142.251.20.x, t0.gstatic.com -> 108.177.14.x — "connection refused"
-# (журнал Throne 2026-11-10). Shadowrocket на телефоне это не задевает так сильно, поэтому в общих
-# списках Google остаётся напрямую. Отключить правило в Throne = Google снова напрямую (правило «Напрямую»).
-GOOGLE_MARKERS = ("google", "gmail", "gstatic", "recaptcha")
+# Google идёт напрямую, как в Shadowrocket (правило google в direct.list); заблокированные в TM части
+# Google (Диск, Meet, YouTube, вложения Gmail и др.) — в proxy.list, он стоит выше.
+# Отдельное правило «Google → VPN» было с 10 по 11.11.2026: Google ломался не из-за блокировок, а из-за
+# DNS — см. PROFILE_DNS.
 
-# DNS профиля: Throne применяет его вместо глобальных настроек, пока выбран этот профиль.
+# DNS профиля. Throne применяет его только при первом добавлении профиля (при обновлении — нет),
+# поэтому это ещё и памятка, какие настройки DNS должны стоять в Throne.
 # FakeIP обязателен: без него в TUN правила по доменам не срабатывают (Chrome шифрует имя сайта, ECH).
-# IPv6 у прямого DNS выключен: у провайдера IPv6 нет, попытки по IPv6 только множат ошибки в журнале.
+# Прямой DNS — явный адрес роутера, НЕ localhost и НЕ dhcp://: с ними sing-box спрашивает в формате
+# EDNS, и DNS в TM на часть имён (Google, Anthropic...) отвечает пустотой — сайты не открываются.
+# С явным адресом пустых ответов 0 (журнал Throne 2026-11-11). В другой сети поменять на её роутер.
+# IPv6 выключен: у провайдера его нет, попытки по IPv6 только множат ошибки.
 PROFILE_DNS = {
     "remote_dns": "tls://8.8.8.8",
-    "remote_dns_disable_ipv6": False,
-    "direct_dns": "localhost",
+    "remote_dns_disable_ipv6": True,
+    "direct_dns": "192.168.1.1",
     "direct_dns_disable_ipv6": True,
     "dns_final_out": "remote",
     "enable_dns_routing": True,
@@ -75,18 +77,6 @@ def read_domain_set(name: str) -> dict:
             continue
         domains.append(line.lstrip(".").lower())
     return {"domain_suffix": domains}
-
-
-def only_google(fields: dict) -> dict:
-    """Оставляет из полей правила только домены/ключевые слова Google."""
-    out = {}
-    for key, values in fields.items():
-        if key == "ip_cidr":
-            continue
-        picked = [v for v in values if any(m in v for m in GOOGLE_MARKERS)]
-        if picked:
-            out[key] = picked
-    return out
 
 
 def read_list(*names: str) -> dict:
@@ -139,6 +129,8 @@ def main():
         # Тот же большой список, что и в Shadowrocket (reject.txt, ~48 тыс. доменов). Отдельным правилом,
         # чтобы его можно было отключить в Throne, если понадобится, не трогая остальную блокировку.
         rule("Реклама (большой список) → блок", action="reject", **read_domain_set("reject.txt")),
+        # Только для компьютера: в Shadowrocket и Loon этот список не подключается.
+        rule("Телеметрия Windows → блок", action="reject", **read_list("windows-telemetry.list")),
         rule("ChatGPT → VPN", "proxy", **read_list("ai/chatgpt.list")),
         rule("Claude → напрямую (отключить = через VPN)", "direct", **read_list("ai/claude.list")),
         rule("Gemini → напрямую (отключить = через VPN)", "direct", **read_list("ai/gemini.list")),
@@ -147,7 +139,6 @@ def main():
         rule("Apple → напрямую (отключить = через VPN)", "direct", **read_list("apple.list")),
         rule("Spotify → VPN", "proxy", **read_list("spotify.list")),
         rule("Туркменистан → напрямую", "direct", **read_list("tmdirect.list")),
-        rule("Google → VPN (отключить = напрямую)", "proxy", **only_google(read_list("direct.list"))),
         rule("Напрямую", "direct", **read_list("direct.list")),
     ]
     profile = {
