@@ -1,5 +1,6 @@
 # Еженедельное обновление рекламных списков (reject.list, reject.txt и профиль Throne)
-# из StevenBlack/hosts и HaGeZi Multi Light (источники — в tools/build_reject.py, SOURCES).
+# из StevenBlack/hosts и HaGeZi Multi Light (источники — в tools/build_reject.py, SOURCES),
+# а также списка телеметрии Microsoft для Throne (windows-telemetry-hagezi.list).
 # Запуск вручную: вкладка Actions → "Обновление списков блокировки" → Run workflow.
 name: Обновление списков блокировки
 
@@ -36,13 +37,13 @@ jobs:
       - name: Сохранить изменения
         run: |
           # Строку с датой сборки не считаем изменением — коммит только если поменялись сами домены
-          if git diff --quiet -I '^# (Собрано|Доменов):' -- xRocket/rules/reject.list xRocket/rules/reject.txt; then
+          if git diff --quiet -I '^# (Собрано|Доменов):' -- xRocket/rules/reject.list xRocket/rules/reject.txt xRocket/rules/windows-telemetry-hagezi.list; then
             echo "Домены не изменились — коммит не нужен."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add xRocket/rules/reject.list xRocket/rules/reject.txt xRocket/Throne.json
+          git add xRocket/rules/reject.list xRocket/rules/reject.txt xRocket/rules/windows-telemetry-hagezi.list xRocket/Throne.json
           git commit -m "Обновление списков блокировки $(date -u +%Y-%m-%d)"
           git pull --rebase
           git push

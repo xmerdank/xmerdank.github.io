@@ -129,8 +129,10 @@ def main():
         # Тот же большой список, что и в Shadowrocket (reject.txt, ~48 тыс. доменов). Отдельным правилом,
         # чтобы его можно было отключить в Throne, если понадобится, не трогая остальную блокировку.
         rule("Реклама (большой список) → блок", action="reject", **read_domain_set("reject.txt")),
-        # Только для компьютера: в Shadowrocket и Loon этот список не подключается.
-        rule("Телеметрия Windows → блок", action="reject", **read_list("windows-telemetry.list")),
+        # Только для компьютера: в Shadowrocket и Loon эти списки не подключаются.
+        # windows-telemetry.list — свои адреса, windows-telemetry-hagezi.list — список HaGeZi (обновляется сам).
+        rule("Телеметрия Windows → блок", action="reject",
+             **read_list("windows-telemetry.list", "windows-telemetry-hagezi.list")),
         rule("ChatGPT → VPN", "proxy", **read_list("ai/chatgpt.list")),
         rule("Claude → напрямую (отключить = через VPN)", "direct", **read_list("ai/claude.list")),
         rule("Gemini → напрямую (отключить = через VPN)", "direct", **read_list("ai/gemini.list")),

@@ -10,6 +10,8 @@
 Результат (в xRocket/rules/):
     reject.list  — RULE-SET (DOMAIN-SUFFIX,домен) — для Loon и как запасной вариант
     reject.txt   — DOMAIN-SET (.домен)            — для Shadowrocket, легче и быстрее
+    windows-telemetry-hagezi.list — телеметрия Microsoft, только для профиля Throne (см. TELEMETRY_SOURCE);
+                   собирается только при запуске без аргумента
 
 Логика блокировки та же, что и раньше: каждый домен блокируется вместе со всеми
 поддоменами. Убираются только записи, которые и так покрыты родительским доменом
@@ -41,6 +43,14 @@ SOURCES = [
 ]
 ROOT = Path(__file__).resolve().parent.parent
 RULES = ROOT / "xRocket" / "rules"
+
+# Телеметрия Windows, Office, Edge, Bing, Xbox — список встроенных трекеров Microsoft от HaGeZi (~365 адресов).
+# Идёт отдельным файлом и подключается только в Throne (правило «Телеметрия Windows → блок»):
+# на айфоне он не нужен. Свои адреса — в windows-telemetry.list, тот файл скрипт не трогает.
+TELEMETRY_SOURCE = ("HaGeZi Native Tracker — Microsoft (Windows/Office)",
+                    "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/native.winoffice-onlydomains.txt")
+TELEMETRY_FILE = "windows-telemetry-hagezi.list"
+MIN_TELEMETRY = 200  # меньше — значит, скачалось что-то не то
 
 # Домены из этих списков не должны блокироваться (иначе REJECT, стоящий выше, их перекроет)
 # reject-allow.list — ручные исключения: адреса, которые источники блокируют зря.
@@ -135,6 +145,14 @@ def main():
     result, removed = reduce(domains, protected_domains())
     if len(result) < MIN_DOMAINS:
         sys.exit(f"Ошибка: получено всего {len(result)} доменов (минимум {MIN_DOMAINS}). Файлы не изменены.")
+    # Телеметрия скачивается до записи файлов: если она не скачалась, не меняется ничего.
+    telemetry = telemetry_removed = None
+    if len(sys.argv) == 1:
+        title, url = TELEMETRY_SOURCE
+        part = parse(read_source(url))
+        if len(part) < MIN_TELEMETRY:
+            sys.exit(f"Ошибка: «{title}» — всего {len(part)} доменов (минимум {MIN_TELEMETRY}). Файлы не изменены.")
+        telemetry, telemetry_removed = reduce(part, protected_domains())
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     header = [
         "# Реклама, трекеры, вредоносные сайты, fake news, азартные игры",
@@ -152,6 +170,21 @@ def main():
     print(f"Итого: {len(result)} (убрано поддоменов-дублей: {len(domains) - len(result) - len(removed)})")
     if removed:
         print("Исключены, т.к. конфликтуют с proxy/direct или стоят в reject-allow.list:", ", ".join(removed))
+    if telemetry is not None:
+        t_header = [
+            "# Телеметрия Microsoft: Windows, Office, Edge, Bing, Xbox. Используется только в профиле Throne.",
+            f"# Источник: {TELEMETRY_SOURCE[0]} — https://github.com/hagezi/dns-blocklists",
+            "# Файл собирается автоматически, руками не править: свои адреса — в windows-telemetry.list,",
+            "# исключения — в reject-allow.list.",
+            f"# Собрано: {stamp} скриптом tools/build_reject.py",
+            f"# Доменов: {len(telemetry)} (каждый блокируется вместе с поддоменами)",
+            "",
+        ]
+        (RULES / TELEMETRY_FILE).write_text(
+            "\n".join(t_header + [f"DOMAIN-SUFFIX,{d}" for d in telemetry]) + "\n", encoding="utf-8", newline="\n")
+        print(f"Телеметрия Microsoft: {len(telemetry)} доменов")
+        if telemetry_removed:
+            print("  исключены (proxy/direct/reject-allow):", ", ".join(telemetry_removed))
 
 
 if __name__ == "__main__":
