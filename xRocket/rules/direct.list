@@ -9,27 +9,22 @@ DOMAIN-KEYWORD,google
 
 ###### DOMAIN-SUFFIX ######
 # Apple и Spotify вынесены в apple.list и spotify.list (отдельные переключатели)
+# Убраны 2026-11-12 (напрямую из TM не открываются, проверка tools/check_direct.py): python.org,
+# pypi.org, habr.com, api.support-kp.com, ipsw.me — сброс по IP, теперь через VPN как «всё остальное»;
+# wordpress.com, yoomoney.ru, appcenter.ms — DNS отвечает 127.0.0.1, перенесены в proxy.list.
 DOMAIN-SUFFIX,linkmessenger.me
 DOMAIN-SUFFIX,mail.me
-DOMAIN-SUFFIX,python.org
-DOMAIN-SUFFIX,pypi.org
-DOMAIN-SUFFIX,ipsw.me
-DOMAIN-SUFFIX,appcenter.ms
 DOMAIN-SUFFIX,onedrive.com
 DOMAIN-SUFFIX,live.com
 DOMAIN-SUFFIX,sharepoint.com
 DOMAIN-SUFFIX,storage.msn.com
 DOMAIN-SUFFIX,outlook.com
 DOMAIN-SUFFIX,msdn.com
-DOMAIN-SUFFIX,api.support-kp.com
-DOMAIN-SUFFIX,habr.com
 DOMAIN-SUFFIX,wikipedia.com
 DOMAIN-SUFFIX,wikipedia.org
 DOMAIN-SUFFIX,wikimedia.org
 DOMAIN-SUFFIX,ivi.ru
-DOMAIN-SUFFIX,wordpress.com
 DOMAIN-SUFFIX,webmoney.ru
-DOMAIN-SUFFIX,yoomoney.ru
 DOMAIN-SUFFIX,ya.ru
 
 ###### Ozon ######

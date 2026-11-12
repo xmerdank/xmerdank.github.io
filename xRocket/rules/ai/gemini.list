@@ -9,7 +9,7 @@ DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
 DOMAIN-SUFFIX,generativelanguage.googleapis.com
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
-DOMAIN-SUFFIX,geller-pa.googleapis.com
+# geller-pa.googleapis.com перенесён в proxy.list (2026-11-12): DNS в TM отвечает 127.0.0.1.
 DOMAIN-SUFFIX,ai.google.dev
 DOMAIN-SUFFIX,notebooklm.google
 DOMAIN-SUFFIX,notebooklm.google.com

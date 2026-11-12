@@ -34,6 +34,10 @@ DOMAIN-SUFFIX,stocks-data-service.apple.com
 # Настройки активации iMessage/FaceTime (тоже Akamai, отказ 14 из 22). Сами сообщения и звонки
 # по-прежнему идут напрямую (facetime.list) - это правило стоит выше и касается только этого адреса.
 DOMAIN-SUFFIX,init.ess.apple.com
+# Проверка tools/check_direct.py 2026-11-12 (компьютер в TM без VPN): Apple News (Akamai) и короткие ссылки apple.co —
+# сброс по IP.
+DOMAIN-SUFFIX,apple.news
+DOMAIN-SUFFIX,apple.co
 # Обход ошибки Shadowrocket: на домашнем Wi-Fi он проверяет IPv6 через gateway.icloud.com, запоминает
 # IPv6-адрес и шлёт прямые соединения по IPv6, которого нет -> "timed out" (90 из 90, 2026-11-10).
 # Через VPN адрес ищет сервер. Убрать, когда IPv6 в роутере будет выключен или заработает.
@@ -134,7 +138,8 @@ DOMAIN-SUFFIX,chromewebstore.google.com
 DOMAIN-SUFFIX,csp.withgoogle.com
 DOMAIN-SUFFIX,naydex.net
 DOMAIN-SUFFIX,ap.yandex-net.ru
-DOMAIN-SUFFIX,in.appcenter.ms
+# Было in.appcenter.ms, с 2026-11-12 весь appcenter.ms (DNS отвечает 127.0.0.1; был в direct.list)
+DOMAIN-SUFFIX,appcenter.ms
 # По логам 2026-11-09: Google Задачи, Meet, Chat и служебные адреса Google (все DNS в TM отвечают 127.0.0.1)
 DOMAIN-SUFFIX,taskassist-pa.googleapis.com
 DOMAIN-SUFFIX,meetings.googleapis.com
@@ -154,6 +159,38 @@ DOMAIN-SUFFIX,meet.google.com
 # Приложение Google Диск для компьютера: основной адрес синхронизации. Роутер отвечает 127.0.0.1
 # (журнал Throne 2026-11-12: 113 из 113 попыток напрямую — отказ; на телефоне тоже 4 из 4).
 DOMAIN-SUFFIX,drivefrontend-pa.googleapis.com
+# Проверка tools/check_direct.py 2026-11-12 (компьютер в TM без VPN): 
+# Google Документы/Таблицы — DNS отвечает 127.0.0.1
+DOMAIN-SUFFIX,docs.google.com
+# Облачное хранилище Google (файлы Firebase и многих приложений) — сброс по IP
+DOMAIN,storage.googleapis.com
+# Gemini (память и синхронизация) — DNS отвечает 127.0.0.1. Был в ai/gemini.list.
+DOMAIN-SUFFIX,geller-pa.googleapis.com
+
+
+####### Microsoft: заблокированы в TM, но попадали под правило microsoft/live (direct.list) #######
+# Проверка tools/check_direct.py 2026-11-12 (компьютер в TM без VPN): 
+# сброс по IP (Akamai 23.x/2.23.x, Fastly 140.248.x, часть адресов Azure) или DNS 127.0.0.1.
+# Вход в учётную запись Microsoft, Microsoft Graph (OneDrive, Outlook, Teams), короткие ссылки
+DOMAIN-SUFFIX,login.live.com
+DOMAIN-SUFFIX,graph.microsoft.com
+DOMAIN-SUFFIX,go.microsoft.com
+DOMAIN-SUFFIX,aka.ms
+DOMAIN-SUFFIX,c.s-microsoft.com
+# Сайт Microsoft (Akamai 23.12.x — отказ 4 из 4 во втором проходе)
+DOMAIN,www.microsoft.com
+# Office: настройки, установка и обновления, статика веб-версии
+DOMAIN-SUFFIX,officeclient.microsoft.com
+DOMAIN-SUFFIX,officecdn.microsoft.com
+DOMAIN-SUFFIX,res.cdn.office.net
+# Обновление клиента OneDrive
+DOMAIN-SUFFIX,oneclient.sfx.ms
+# Центр обновления Windows и загрузки Microsoft. Обновления будут качаться через VPN (это трафик);
+# напрямую они не работают совсем.
+DOMAIN-SUFFIX,update.microsoft.com
+DOMAIN-SUFFIX,download.microsoft.com
+DOMAIN-SUFFIX,delivery.mp.microsoft.com
+DOMAIN-SUFFIX,windowsupdate.com
 # Статика Google (шрифты, скрипты, reCAPTCHA). Журналы 2026-11-11/12: когда DNS выдаёт адрес из
 # 142.251.153.x, соединение сбрасывается (45 из 49); всего напрямую не открылось 48 из 57.
 DOMAIN-SUFFIX,gstatic.com
@@ -176,6 +213,9 @@ DOMAIN-SUFFIX,3dnews.ru
 DOMAIN-SUFFIX,mail.ru
 # Картинки и статика Mail.ru: DNS роутера отвечает 127.0.0.1 (журнал Throne 2026-11-10). Был в direct.list.
 DOMAIN-SUFFIX,imgsmail.ru
+# Проверка tools/check_direct.py 2026-11-12 (компьютер в TM без VPN): DNS отвечает 127.0.0.1. Были в direct.list.
+DOMAIN-SUFFIX,wordpress.com
+DOMAIN-SUFFIX,yoomoney.ru
 
 
 ####### Vkontakte #######
