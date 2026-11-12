@@ -6,3 +6,6 @@
 
 # Статика (картинки, стили) сайта LC Waikiki на Akamai — в списке HaGeZi Light, на рекламу не похоже.
 DOMAIN-SUFFIX,static.lcwaikiki.com
+
+# Картинки новостей 90min / Minute Media (лента новостей FotMob) — в списке StevenBlack, но это не реклама.
+DOMAIN-SUFFIX,images2.minutemediacdn.com

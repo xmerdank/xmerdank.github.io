@@ -1,7 +1,7 @@
 # Реклама, трекеры, вредоносные сайты, fake news, азартные игры
 # Источники: StevenBlack/hosts (fakenews-gambling); HaGeZi Multi Light
-# Собрано: 2026-11-11 скриптом tools/build_reject.py
-# Доменов: 125840 (каждый блокируется вместе с поддоменами)
+# Собрано: 2026-11-12 скриптом tools/build_reject.py
+# Доменов: 125828 (каждый блокируется вместе с поддоменами)
 
 .0--d.com
 .0-02.net
@@ -231,6 +231,7 @@
 .09ccr7-launches.appsflyersdk.com
 .09soutai.com
 .09zyy.com
+.0a1t46qpf.com
 .0af2a962b0102942d9a7df351b20be55.com
 .0aoaev-launches.appsflyersdk.com
 .0aol.com
@@ -2673,6 +2674,7 @@
 .4inhps-launches.appsflyersdk.com
 .4irc.com
 .4iueh.pics
+.4j9cjy80f.com
 .4jdfn.perfectprocessend.de
 .4jgsqp-cdn-settings.appsflyersdk.com
 .4jgsqp-launches.appsflyersdk.com
@@ -3836,6 +3838,7 @@
 .7nasmi-launches.appsflyersdk.com
 .7nbebz9jo87v13nn3zexy52h1vc9.cfd
 .7nt9p4d4.de
+.7oavaac8i.com
 .7odxv0l067ka.net
 .7offers.ru
 .7p41vpmf-analytics.convkit.com
@@ -3939,7 +3942,6 @@
 .85723.sbs
 .85734.sbs
 .8573757983.cfd
-.85875943.weebly.com
 .858771.sbs
 .8597432.top
 .85analytics.com
@@ -10917,7 +10919,6 @@
 .adverterenbijrtl.nl
 .adverterenbijsbs.nl
 .adverterenzeeland.nl
-.advertgallery-jp.com
 .advertica-cdn.com
 .adverticum.com
 .adverticum.net
@@ -19613,7 +19614,6 @@
 .api-dataroid.akbank.com
 .api-dataroid.akbank.com.tr
 .api-diagnostics.revenuecat.com
-.api-dns.org
 .api-dynhost.hismarttv.com
 .api-engage-us.sitecorecloud.io
 .api-euw.analytics.livetiles.io
@@ -20186,7 +20186,6 @@
 .app.datatrics.com
 .app.datorama.com
 .app.epicwebs.in
-.app.flipsnack.com
 .app.friendlyanalytics.ch
 .app.geogen.io
 .app.getwoohoo.com
@@ -20200,7 +20199,6 @@
 .app.koah.ai
 .app.kuvio.io
 .app.leadsrx.com
-.app.loanspq.com
 .app.mashero.com
 .app.medfiille.com
 .app.meltwater.com
@@ -27089,7 +27087,6 @@
 .busyuptoss.com
 .butchestusker.com
 .butcornyyet.com
-.buthichiu2.sbs
 .butikmaria.com
 .butikyaya.pl
 .butlerconews.com
@@ -31067,7 +31064,6 @@
 .click.pandaspins.com
 .click.redditmail.com
 .click.searchnation.net
-.click.shootproof.com
 .click.spe.ometria.email
 .click.speee-ad.jp
 .click.tanx.com
@@ -35456,7 +35452,6 @@
 .dadsimz.com
 .dadspms.com
 .dadyinfia.store
-.daewteuidohs.weebly.com
 .daf4199210.745948e29b.com
 .daf42dbf-vhmygeqr.cname.ebis.ne.jp
 .dafa08.net
@@ -35792,7 +35787,6 @@
 .dast-archiwum.pl
 .dastivo.shop
 .dat.funheroic.com
-.data-577c2406e4.nwzonline.de
 .data-abtest-api.mihoyo.com
 .data-analytics.farmatodo.com.co
 .data-api.eva.ua
@@ -38407,6 +38401,7 @@
 .donutclientz.netlify.app
 .donutsmpclientts.lovable.app
 .donutsmputilitys.netlify.app
+.donwgdsqq.com
 .doo888x.com
 .doodahnulling.cyou
 .doogi.eu
@@ -38459,6 +38454,7 @@
 .dorklandparis.fr
 .dorlznjaklah.teachable.com
 .dormidisep.store
+.dormwin.com
 .dornrusky.com
 .dorrckedmatzas.info
 .dorsalapp.com
@@ -39942,6 +39938,7 @@
 .ebten.xyz
 .ebtmarketing.com
 .eburnean-poulaine.shop
+.eburnean-sabot.shop
 .eburnean-solleret.shop
 .ebuyg.mom
 .ebuzzing.com
@@ -46165,6 +46162,7 @@
 .fmyh.net
 .fmyvtaydfeubb.online
 .fn-b2-prd-analytics-app.azurewebsites.net
+.fn-checker.top
 .fn-pz.com
 .fn-treasure.info
 .fn9y4j-attr.appsflyersdk.com
@@ -46736,7 +46734,6 @@
 .free-money.host.sk
 .free-ned.club
 .free-robux.ru
-.free-services.shop
 .free-stats.com
 .free-video-movie.com
 .free.aol.com
@@ -47721,6 +47718,7 @@
 .gadzooksrudely.com
 .gae.karte.io
 .gaeldomyore.qpon
+.gaenterprises.in
 .gaf-company.clean.to
 .gafas-es.affex.org
 .gaggigjzganfc.online
@@ -54453,6 +54451,7 @@
 .id6.me
 .id6589.com
 .id74628235281653.rest
+.id75425.shop
 .id83n7fdn9263ng97f733e.rest
 .id93782346383253.rest
 .idac-analytics.netlify.app
@@ -55001,7 +55000,6 @@
 .images.twnmm.com
 .images.webads.co.uk
 .images1.cliqueclack.com
-.images2.minutemediacdn.com
 .imagescroll.detik.com
 .imageserv.adtech.fr
 .imageserv.adtech.us
@@ -58596,7 +58594,6 @@
 .k.fuiost2be.info
 .k.iinfo.cz
 .k.qwant.com
-.k.secrets.ai
 .k.voyageursdumonde.fr
 .k030.koco.com
 .k0ngt9-cdn-settings.appsflyersdk.com
@@ -59995,6 +59992,7 @@
 .kmwbl.com
 .kmyjxljwefpjr.space
 .kmzjnlmnahctb.space
+.kmznapmr.shop
 .kmzsgxcxhnrns.site
 .kmzsjpsyvxfzt.online
 .kn.devmicro7.workers.dev
@@ -62386,6 +62384,7 @@
 .lilisshop.de
 .lilitong.org
 .lilola.shop
+.lilplay.com
 .lilstts.com
 .limanfindra.net
 .limanfinthratrade.net
@@ -62820,7 +62819,6 @@
 .livesetwebs.org
 .livesfoot.fr
 .livesports088.net
-.livestart-ldgre.framer.media
 .livestats.fr
 .livetech.shopee.co.id
 .livetech.shopee.co.id.c.byteplusfcdn-oversea.com
@@ -63826,6 +63824,7 @@
 .login.creditals-email.space
 .login.ipkopl.com
 .login.ishpl.us
+.loging-drivers.com
 .loginmsftcheck.com
 .loginsecurde4-dpqom26teqv9.edgeone.dev
 .loginsupportmeta.start.page
@@ -68807,7 +68806,6 @@
 .mbada.nan.co.jp
 .mbaileymarketing.com
 .mbaobao.com
-.mbarbosa.info
 .mbbai7.ru
 .mbbcdn.cfd
 .mbbotoristbeesting.info
@@ -69023,6 +69021,7 @@
 .mealdisparitydrip.com
 .mealrentyard.com
 .mealrescue.com
+.mealvorokitchen.com
 .meamox.com
 .meanlytics.com
 .meas.join-stories.com
@@ -72597,6 +72596,7 @@
 .monontoday.com
 .monopris.fr
 .monorail-edge.shopifysvc.com
+.monostrite.com
 .monpetit-kinderzimmer.de
 .monppaiement.fr
 .monroeconews.com
@@ -73518,7 +73518,6 @@
 .mwxiwo-onelink.appsflyersdk.com
 .mwxlq.com
 .mwyczeazmowr.in
-.mwyry.com
 .mwzeom.zeotap.com
 .mx-ad-lgsmartad-com.aws-prd.net
 .mx-album-api.vivoglobal.com
@@ -73674,7 +73673,6 @@
 .mydnssbox.gleeze.com
 .mydreamday.fr
 .mydreamdegree.com
-.mydrive.effem.com
 .mydsp.io
 .myeasetrack.com
 .myedebred.fr
@@ -74803,6 +74801,7 @@
 .netffllx.20-115-123-195.cpanel.site
 .netfiix-profil.com
 .netfiix-servicio.com
+.netfiixza.com
 .netflix-appsmounth.20-115-123-195.cpanel.site
 .netflix-en-france.fr
 .netflix-memberships.com
@@ -77662,7 +77661,6 @@
 .officeklafter.com
 .officence.com
 .official-activator.net
-.official-bridgepage.wixstudio.com
 .official-global.wixstudio.com
 .official-iq-test.kr
 .official-kmspico.co
@@ -77836,7 +77834,6 @@
 .oihgombbziwby.online
 .oijkse.com
 .oijnbvtqfrezf.online
-.oil.giftedbuffet.tech
 .oilfisheleazarplod.cfd
 .oilgeopolitics.net
 .oilprofit.io
@@ -79043,7 +79040,6 @@
 .ordersildenafil.com
 .ordigital-shop.pages.dev
 .ordinalblockingprobable.com
-.ordinepl040.vercel.app
 .ordkfbh.shop
 .ordremek.fr
 .oreideshlqn.cyou
@@ -84594,7 +84590,6 @@
 .postmedia.us.janrainsso.com
 .postmediamontrealgazette2.files.wordpress.com
 .postnorddks.com
-.postoffice.adobe.com
 .postoffice.edge.nc0.co
 .postpoland.desbau.com
 .postquare.com
@@ -85530,6 +85525,7 @@
 .promocjaeuro.pl
 .promocjagsm.pl
 .promoclub.pl
+.promogiftwinter.com
 .promogrim.fr
 .promojet.ru
 .promojustforyou.click
@@ -86022,7 +86018,6 @@
 .pub-45a83f302a1943ed8d62418c2af947ef.r2.dev
 .pub-46e37a69c98c46198a9b7195154ac728.r2.dev
 .pub-47752fad5d8046678118f8980f370361.r2.dev
-.pub-47cf88b9b6f343a5a501976be6adf17e.r2.dev
 .pub-4855794bab3f44ff864513d537421da4.r2.dev
 .pub-4cf232026b854c1e8bb06b595c8f7587.r2.dev
 .pub-4ea98280e3024853b6aca6d5ececc1eb.r2.dev
@@ -88926,7 +88921,6 @@
 .refpasrasw.world
 .refracaires.online
 .refresh-page-loading-100120348.web.app
-.refreshed-challenge-135573.framer.app
 .refreshmould.com
 .refts6-cdn-settings.appsflyersdk.com
 .refugeeair.org
@@ -91106,6 +91100,7 @@
 .ruffiangars.cyou
 .rufolsfitt.store
 .rufous-wenge-bag.shop
+.rufouskettles.click
 .rufoustribes.cfd
 .rugalnylon.com
 .rugbiesfoliagejerker.qpon
@@ -93387,6 +93382,7 @@
 .securifyprotect.com
 .securifythis.com
 .securisurf.com
+.securite-client.info
 .securite.01net.com
 .security-apple-manage.com
 .security-info.zyns.com
@@ -93398,7 +93394,6 @@
 .security60-e.com
 .securityannex.net
 .securityscan.us
-.securitysteam.com
 .securybrowsenow.com
 .securykit.com
 .securysearch.com
@@ -93627,7 +93622,6 @@
 .semperinshave.rest
 .sempersim.su
 .semplesapolune.com
-.senati-seguridad--senati-2026.replit.app
 .senbiaojita.com
 .send2url.com
 .sendainverectopro.com
@@ -93636,7 +93630,6 @@
 .sendbox.nocoshop.ru
 .sendbox.topupload.ru
 .sendeewhine.cfd
-.sender.zohoinsights-crm.com
 .sendfwd.com
 .sendhtml.net
 .sendingurl.com
@@ -95906,7 +95899,6 @@
 .shimmerriverglow.xyz
 .shinedns.net
 .shinglefrigate.com
-.shining-whoever-570303.framer.app
 .shinqueen.com
 .shiny-kangaroo-251349.netlify.app
 .shinybirdwhispered.com
@@ -98266,7 +98258,6 @@
 .snjqhu-inapps.appsflyersdk.com
 .snjqhu-launches.appsflyersdk.com
 .snjqhu-pia.appsflyersdk.com
-.snn-r4zv0f-h6s38-16lk-1f4bh.pages.dev
 .snnbtgzmzfrvt.site
 .snobobugge.store
 .snonnwboundbangers.info
@@ -99734,7 +99725,6 @@
 .ss.businessoffashion.com
 .ss.gatewayapi.com
 .ss.hellotushy.com
-.ss.realgreen.com
 .ss.tiscali.it
 .ss1txn.vn-88aa.net
 .ssa.direct-running.fr
@@ -103527,7 +103517,6 @@
 .stroy-sam.com
 .strpjmp.com
 .strrget.za.com
-.strtedndaxxapp.wixstudio.com
 .structures-made-easy.co.uk
 .strumentimusicali-ai.com
 .struntdarners.com
@@ -104967,7 +104956,6 @@
 .t3gvot8nxp7z3cb9vri8r.cfd
 .t4.market.xiaomi.com
 .t4.zcvh.net
-.t4trade.com
 .t5.market.xiaomi.com
 .t5.zcvh.net
 .t5f9z1c.pics
@@ -108760,6 +108748,7 @@
 .toithatbaicmnrhuhu.start.page
 .tojestto.is-best.net
 .tojinr.com
+.tokaixemcdn8-hk22.cfd
 .tokedlucigen.cyou
 .tokelaunavet.cyou
 .token-invest.com
@@ -112100,6 +112089,7 @@
 .tz.sec.xiaomi.com
 .tz284.com
 .tz6jqe.0571zkfk.com
+.tzbgtm.com
 .tzccrgiuxzclh.site
 .tzd4is.cyou
 .tzeaexcxa.com
@@ -113698,7 +113688,6 @@
 .upgulpinon.com
 .upgyu.com
 .upheapsbaze.qpon
-.uphold-dabsend.live
 .upholdbrilliancerecast.com
 .uphtenydsrbdt.space
 .upie.buzz
@@ -113845,7 +113834,6 @@
 .url-app.com
 .url-hoster.com
 .url-redirect.com
-.url.emailprotection.link
 .url.in.th
 .url.totaldrive.com
 .url2all.net
@@ -119374,7 +119362,6 @@
 .worden.samenresultaat.nl
 .wordfence.me
 .wordierwrible.cfd
-.wordpress-1655621-6589876.cloudwaysapps.com
 .wordpress-215451-0.cloudclusters.net
 .wordpress-215451-pliwa.cloudclusters.net
 .wordpress-215481-jlkoww.cloudclusters.net
@@ -125587,6 +125574,7 @@
 .zt0ps1-cdn-settings.appsflyersdk.com
 .zt0ps1-launches.appsflyersdk.com
 .zt1.me.zing.vn
+.ztbwr.com
 .ztcpeelqlprfbowg1ii1rmb68wefry.cfd
 .ztdme.com
 .ztdnxg-cdn-settings.appsflyersdk.com

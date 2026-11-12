@@ -2,7 +2,7 @@
 # Источник: HaGeZi Native Tracker — Microsoft (Windows/Office) — https://github.com/hagezi/dns-blocklists
 # Файл собирается автоматически, руками не править: свои адреса — в windows-telemetry.list,
 # исключения — в reject-allow.list.
-# Собрано: 2026-11-11 скриптом tools/build_reject.py
+# Собрано: 2026-11-12 скриптом tools/build_reject.py
 # Доменов: 364 (каждый блокируется вместе с поддоменами)
 
 DOMAIN-SUFFIX,a-ring-fallback.msedge.net
