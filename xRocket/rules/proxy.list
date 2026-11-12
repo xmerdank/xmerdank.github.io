@@ -151,6 +151,9 @@ DOMAIN-SUFFIX,clienttracing-pa.googleapis.com
 # Через Диск открывается и предпросмотр вложений Gmail в браузере.
 DOMAIN-SUFFIX,drive.google.com
 DOMAIN-SUFFIX,meet.google.com
+# Приложение Google Диск для компьютера: основной адрес синхронизации. Роутер отвечает 127.0.0.1
+# (журнал Throne 2026-11-12: 113 из 113 попыток напрямую — отказ; на телефоне тоже 4 из 4).
+DOMAIN-SUFFIX,drivefrontend-pa.googleapis.com
 # Статика Google (шрифты, скрипты, reCAPTCHA). Журналы 2026-11-11/12: когда DNS выдаёт адрес из
 # 142.251.153.x, соединение сбрасывается (45 из 49); всего напрямую не открылось 48 из 57.
 DOMAIN-SUFFIX,gstatic.com
