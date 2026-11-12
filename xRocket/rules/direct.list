@@ -13,7 +13,6 @@ DOMAIN-KEYWORD,google
 # pypi.org, habr.com, api.support-kp.com, ipsw.me — сброс по IP, теперь через VPN как «всё остальное»;
 # wordpress.com, yoomoney.ru, appcenter.ms — DNS отвечает 127.0.0.1, перенесены в proxy.list.
 DOMAIN-SUFFIX,linkmessenger.me
-DOMAIN-SUFFIX,mail.me
 DOMAIN-SUFFIX,onedrive.com
 DOMAIN-SUFFIX,live.com
 DOMAIN-SUFFIX,sharepoint.com
@@ -30,7 +29,6 @@ DOMAIN-SUFFIX,ya.ru
 ###### Ozon ######
 DOMAIN-SUFFIX,ozon.ru
 DOMAIN-SUFFIX,ozon.tm
-DOMAIN-SUFFIX,ozone.ru
 DOMAIN-SUFFIX,ozonusercontent.com
 DOMAIN-SUFFIX,ozon.kz
 DOMAIN-SUFFIX,ozon.by
