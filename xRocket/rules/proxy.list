@@ -14,6 +14,26 @@ DOMAIN-SUFFIX,sequoia.apple.com
 DOMAIN-SUFFIX,amp-api-edge.apps.apple.com
 DOMAIN-SUFFIX,sandbox.itunes.apple.com
 DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
+# Журналы 2026-11-11/12: эти адреса Apple лежат на CDN Akamai, а его диапазоны (23.x, 2.17-2.21, 104.97,
+# 95.161, 92.122) в TM сбрасываются: напрямую отказ в 30-100% соединений. Адреса самой Apple (17.x) работают.
+# Поиск устройств / iCloud, App Store и покупки, Погода, обновления iOS, проверка сертификатов, Акции
+DOMAIN-SUFFIX,init-p01md.apple.com
+DOMAIN,itunes.apple.com
+DOMAIN-SUFFIX,pd.itunes.apple.com
+DOMAIN-SUFFIX,uts-api.itunes.apple.com
+DOMAIN-SUFFIX,entitlements.itunes.apple.com
+DOMAIN-SUFFIX,mzstorekit.itunes.apple.com
+DOMAIN-SUFFIX,sync.itunes.apple.com
+DOMAIN-SUFFIX,weatherkit.apple.com
+DOMAIN-SUFFIX,mesu.apple.com
+DOMAIN-SUFFIX,pancake.apple.com
+DOMAIN-SUFFIX,ocsp2.apple.com
+DOMAIN-SUFFIX,cstat.cdn-apple.com
+DOMAIN-SUFFIX,smp-device-content.apple.com
+DOMAIN-SUFFIX,stocks-data-service.apple.com
+# Настройки активации iMessage/FaceTime (тоже Akamai, отказ 14 из 22). Сами сообщения и звонки
+# по-прежнему идут напрямую (facetime.list) - это правило стоит выше и касается только этого адреса.
+DOMAIN-SUFFIX,init.ess.apple.com
 # Обход ошибки Shadowrocket: на домашнем Wi-Fi он проверяет IPv6 через gateway.icloud.com, запоминает
 # IPv6-адрес и шлёт прямые соединения по IPv6, которого нет -> "timed out" (90 из 90, 2026-11-10).
 # Через VPN адрес ищет сервер. Убрать, когда IPv6 в роутере будет выключен или заработает.
@@ -131,6 +151,9 @@ DOMAIN-SUFFIX,clienttracing-pa.googleapis.com
 # Через Диск открывается и предпросмотр вложений Gmail в браузере.
 DOMAIN-SUFFIX,drive.google.com
 DOMAIN-SUFFIX,meet.google.com
+# Статика Google (шрифты, скрипты, reCAPTCHA). Журналы 2026-11-11/12: когда DNS выдаёт адрес из
+# 142.251.153.x, соединение сбрасывается (45 из 49); всего напрямую не открылось 48 из 57.
+DOMAIN-SUFFIX,gstatic.com
 
 
 ####### Заблокированы в TM и шли через "всё остальное" с задержкой ~2 с (логи 2026-11-09/10) #######
