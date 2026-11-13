@@ -18,8 +18,6 @@ DOMAIN-SUFFIX,sanly.tm
 DOMAIN-SUFFIX,rysgalbank.tm
 
 # Туркменские сайты на других доменах
-# Убраны 2026-11-12: archalyk.com и beletfilm.com лежат не в TM (Hostinger/CloudFront, AWS), напрямую
-# сброс по IP — пусть идут через VPN; nesipetsin.info — домен не работает (стоянка регистратора).
 DOMAIN-SUFFIX,tmcars.info
 DOMAIN-SUFFIX,tapgo.biz
 DOMAIN-SUFFIX,alibazar.info

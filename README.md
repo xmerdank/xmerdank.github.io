@@ -1,18 +1,52 @@
-## Special statement:
+# xRocket
 
-* Any unlocking and decryption analysis scripts involved in the scripting project released by this warehouse are only used for testing, learning and research, and are forbidden to be used for commercial purposes. Their legality, accuracy, completeness and effectiveness cannot be guaranteed. Please make your own judgment based on the situation. .
+Личные настройки маршрутизации и блокировки рекламы для **Shadowrocket** и **Loon** (iPhone, iPad) и **Throne** (Windows).
 
-* All resource files in this project are forbidden to be reproduced or published in any form by any official account or self-media.
+## Что внутри
 
-* This warehouse is not responsible for any script problems, including but not limited to any loss or damage caused by any script errors.
+- **Маршрутизация:** часть сайтов открывается напрямую, остальное — через ваш прокси-сервер.
+- **Блокировка** рекламы, трекеров и телеметрии: около 126 тыс. доменов, списки обновляются автоматически раз в неделю.
+- **Модули** для YouTube и TikTok.
 
-* Any user who indirectly uses the script, including but not limited to establishing a VPS or disseminating it when certain actions violate national/regional laws or related regulations, this warehouse is not responsible for any privacy leakage or other consequences caused by this.
+Серверов и подписок здесь нет — нужен свой прокси-сервер.
 
-* Do not use any content of the Script project for commercial or illegal purposes, otherwise you will be responsible for the consequences.
+## Подключение
 
-* If any unit or individual believes that the script of the project may be suspected of infringing on their rights, they should promptly notify and provide proof of identity and ownership. We will delete the relevant script after receiving the certification document.
+| Приложение | Куда добавить | Ссылка |
+|---|---|---|
+| Shadowrocket | Конфигурация → добавить по ссылке | `https://xmerdank.github.io/xRocket/xRules.conf` |
+| Loon | Импорт конфигурации по ссылке | `https://xmerdank.github.io/xRocket/xLoon.conf` |
+| Throne | Маршрутизация → добавить удалённый (Remote) профиль | `https://xmerdank.github.io/xRocket/Throne.json` |
 
-* Anyone who views this item in any way or directly or indirectly uses any script of the Script item should read this statement carefully. This warehouse reserves the right to change or supplement this disclaimer at any time. Once you have used and copied any relevant scripts or rules of the Script project, you are deemed to have accepted this disclaimer.
+- **Shadowrocket:** переключатели для ИИ-сервисов, Apple и Spotify («напрямую» или «через сервер») — на главном экране.
+- **Throne:** переключатель — это отключение правила, например «Claude → напрямую». Throne помнит отключённые правила и после обновления профиля. Папка Throne должна лежать по пути из латинских букв, иначе прямые соединения не работают.
 
- **You must completely delete the above content from your computer or mobile phone within 24 hours after downloading.**  </br>
-> ***You have used or copied any script made by yourself in this warehouse, it is deemed to have accepted this statement, please read it carefully*** 
+## Структура
+
+```
+xRocket/xRules.conf     конфигурация Shadowrocket
+xRocket/xLoon.conf      конфигурация Loon
+xRocket/Throne.json     профиль Throne (собирается автоматически из rules/)
+xRocket/rules/          списки правил
+xRocket/modules/        модули YouTube и TikTok
+xRocket/scripts/        скрипты
+tools/                  сборка списков и проверка доступности адресов
+```
+
+## Источники и лицензии
+
+- [StevenBlack/hosts](https://github.com/StevenBlack/hosts) — MIT.
+- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) (Multi Light, Microsoft Tracker) — GPL-3.0.
+- Модуль YouTube основан на [Maasea/sgmodule](https://github.com/Maasea/sgmodule).
+
+Собранные списки блокировки (`reject.txt`, `reject.list`, `windows-telemetry-hagezi.list`, `Throne.json`) содержат данные этих источников и распространяются на условиях их лицензий.
+
+## Отказ от ответственности
+
+- Проект личный и некоммерческий, создан для изучения и тестирования сетевых настроек. Всё предоставляется «как есть», без каких-либо гарантий работоспособности, точности и пригодности для конкретной цели.
+- Автор не несёт ответственности за любой ущерб, сбои, потерю данных и иные последствия использования материалов.
+- Вы сами отвечаете за то, чтобы ваше использование соответствовало законам вашей страны, а также правилам сервисов и приложений.
+- Проект не предоставляет VPN- и прокси-серверов и не связан с разработчиками упомянутых приложений и сервисов. Их названия и товарные знаки принадлежат владельцам.
+- Скрипты в `xRocket/scripts/` предназначены только для исследования и тестирования; коммерческое использование запрещено. Если приложение вам нравится, поддержите разработчика и купите подписку.
+- Правообладатель, который считает, что материалы нарушают его права, может написать через [Issues](https://github.com/xmerdank/xmerdank.github.io/issues) — материал будет удалён.
+- Используя или копируя материалы репозитория, вы соглашаетесь с этими условиями.
