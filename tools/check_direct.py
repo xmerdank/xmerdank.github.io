@@ -6,6 +6,8 @@
     python tools/check_direct.py                 # все прямые списки
     python tools/check_direct.py --dns 192.168.1.1 example.com other.org   # плюс свои адреса
     python tools/check_direct.py --rounds 5      # больше попыток на адрес (по умолчанию 3)
+    python tools/check_direct.py --only a.com b.com   # только эти адреса (даже если они в proxy.list)
+    python tools/check_direct.py --proxy-list    # адреса из proxy.list: не разблокировали ли их
 
 Что проверяется для каждого адреса — так же, как его открывало бы приложение напрямую:
     1. DNS: запрос к DNS роутера (по умолчанию 192.168.1.1). Ответ 127.0.0.1 — так в TM блокируют сайты.
@@ -159,11 +161,25 @@ def probe(host: str, ip: str) -> tuple[bool, str, float]:
     except OSError as e:
         return False, f"TCP: {e.strerror or e}", time.monotonic() - t0
     ctx = ssl.create_default_context()
+    note = ""
     try:
         tls = ctx.wrap_socket(raw, server_hostname=host)
     except ssl.SSLCertVerificationError as e:
         raw.close()
-        return False, f"TLS: чужой сертификат ({e.verify_message})", time.monotonic() - t0
+        # Имя не совпало — возможна подмена, считаем неудачей. Остальное (неизвестный центр сертификации,
+        # как у части серверов Apple со своим корневым сертификатом, или просроченный сертификат) —
+        # сервер доступен, проблема не в блокировке: повторяем без проверки.
+        if e.verify_code == 62:
+            return False, f"TLS: чужой сертификат ({e.verify_message})", time.monotonic() - t0
+        note = " (сертификат не проверен)"
+        try:
+            raw = socket.create_connection((ip, 443), timeout=TIMEOUT)
+            loose = ssl.create_default_context()
+            loose.check_hostname = False
+            loose.verify_mode = ssl.CERT_NONE
+            tls = loose.wrap_socket(raw, server_hostname=host)
+        except (OSError, ssl.SSLError) as e2:
+            return False, f"TLS: {type(e2).__name__}", time.monotonic() - t0
     except (ConnectionResetError, ssl.SSLError, socket.timeout, OSError) as e:
         raw.close()
         kind = "сброс (блок по имени, SNI)" if isinstance(e, ConnectionResetError) else type(e).__name__
@@ -178,7 +194,7 @@ def probe(host: str, ip: str) -> tuple[bool, str, float]:
         tls.close()
     if not first.startswith("HTTP/"):
         return False, "HTTP: пустой ответ", time.monotonic() - t0
-    return True, first.split(" ", 2)[1] if " " in first else first, time.monotonic() - t0
+    return True, (first.split(" ", 2)[1] if " " in first else first) + note, time.monotonic() - t0
 
 
 def check(host: str, dns: str) -> dict:
@@ -207,22 +223,29 @@ def check(host: str, dns: str) -> dict:
     return res
 
 
-def build_targets(extra: list[str]):
+def build_targets(extra: list[str], only: bool = False, proxy_list: bool = False):
     proxy_rules = read_rules(PROXY_LIST)
     targets, skipped = [], []  # (хост, откуда)
     seen = set()
 
-    def add(host, origin, alt=None):
+    def add(host, origin, alt=None, force=False):
         if host in seen:
             return
         seen.add(host)
-        hit = in_proxy(host, proxy_rules)
+        hit = None if force else in_proxy(host, proxy_rules)
         if hit:
             skipped.append((host, f"через VPN по proxy.list ({hit})"))
         else:
             targets.append((host, origin, alt))
 
-    for name in DIRECT_LISTS:
+    if proxy_list:
+        # Обратная проверка: адреса, которые сейчас идут через VPN, — может, их уже разблокировали
+        for kind, value in proxy_rules:
+            if kind == "DOMAIN-KEYWORD":
+                skipped.append((value, "proxy.list: ключевое слово, не проверяется"))
+            else:
+                add(value, "proxy.list", None if kind == "DOMAIN" else "www." + value, force=True)
+    for name in ([] if only or proxy_list else DIRECT_LISTS):
         for kind, value in read_rules(name):
             if kind == "DOMAIN-KEYWORD":
                 for h in KEYWORD_SAMPLES.get(value, []):
@@ -235,7 +258,8 @@ def build_targets(extra: list[str]):
                 # для суффикса: сам домен, а если у него нет адреса — www.
                 add(value, name, None if kind == "DOMAIN" else "www." + value)
     for h in extra:
-        add(h.lower(), "командная строка")
+        # Адреса из командной строки проверяются всегда, даже если они в proxy.list
+        add(h.lower(), "командная строка", force=True)
     return targets, skipped
 
 
@@ -248,10 +272,13 @@ def main():
     ap = argparse.ArgumentParser(description="Проверка прямых адресов без VPN")
     ap.add_argument("--dns", default="192.168.1.1", help="DNS роутера (по умолчанию 192.168.1.1)")
     ap.add_argument("--rounds", type=int, default=3, help="попыток на адрес (по умолчанию 3)")
+    ap.add_argument("--only", action="store_true", help="проверить только адреса из командной строки")
+    ap.add_argument("--proxy-list", action="store_true",
+                    help="проверить адреса из proxy.list (работают ли они уже напрямую)")
     ap.add_argument("hosts", nargs="*", help="дополнительные адреса для проверки")
     args = ap.parse_args()
 
-    targets, skipped = build_targets(args.hosts)
+    targets, skipped = build_targets(args.hosts, args.only, args.proxy_list)
     print(f"Проверяю {len(targets)} адресов через DNS {args.dns} (VPN должен быть выключен)...\n")
 
     def run(t):

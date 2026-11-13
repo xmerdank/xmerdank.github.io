@@ -38,6 +38,22 @@ DOMAIN-SUFFIX,init.ess.apple.com
 # сброс по IP.
 DOMAIN-SUFFIX,apple.news
 DOMAIN-SUFFIX,apple.co
+# Проверка 2026-11-13 (check_direct.py, 4 попытки) + журналы 12-13.11: не открываются напрямую ни разу.
+# App Store: витрина, вкладка «Обновления», поиск (Fastly 146.75.x — отказ). Сами загрузки приложений
+# (iosapps.itunes.apple.com, is*-ssl.mzstatic.com) идут напрямую с серверов Apple 17.x и работают.
+DOMAIN-SUFFIX,amp-api.apps.apple.com
+DOMAIN-SUFFIX,amp-api-updates.apps.apple.com
+DOMAIN-SUFFIX,amp-api-search-edge.apps.apple.com
+# Каталог Apple Music — DNS отвечает 127.0.0.1
+DOMAIN-SUFFIX,amp-api.music.apple.com
+DOMAIN-SUFFIX,amp-api-edge.music.apple.com
+# Подсказки Spotlight и Safari (AWS — отказ)
+DOMAIN-SUFFIX,smoot.apple.com
+# Game Center, воспроизведение iTunes, персональные рекомендации App Store, эксперименты Apple (Akamai — отказ)
+DOMAIN-SUFFIX,static.gc.apple.com
+DOMAIN-SUFFIX,play.itunes.apple.com
+DOMAIN-SUFFIX,partiality.itunes.apple.com
+DOMAIN-SUFFIX,experiments.apple.com
 # Обход ошибки Shadowrocket: на домашнем Wi-Fi он проверяет IPv6 через gateway.icloud.com, запоминает
 # IPv6-адрес и шлёт прямые соединения по IPv6, которого нет -> "timed out" (90 из 90, 2026-11-10).
 # Через VPN адрес ищет сервер. Убрать, когда IPv6 в роутере будет выключен или заработает.
