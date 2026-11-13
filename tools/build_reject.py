@@ -10,6 +10,8 @@
 Результат (в xRocket/rules/):
     reject.list  — RULE-SET (DOMAIN-SUFFIX,домен) — для Loon и как запасной вариант
     reject.txt   — DOMAIN-SET (.домен)            — для Shadowrocket, легче и быстрее
+    reject-mihomo.txt — набор доменов mihomo (+.домен) — для FlClash (xFlClash.js). В mihomo запись
+                   «.домен» блокирует только поддомены, а «+.домен» — и сам домен, как в Shadowrocket.
     windows-telemetry-hagezi.list — телеметрия Microsoft, только для профиля Throne (см. TELEMETRY_SOURCE);
                    собирается только при запуске без аргумента
 
@@ -166,6 +168,8 @@ def main():
         "\n".join(header + [f"DOMAIN-SUFFIX,{d}" for d in result]) + "\n", encoding="utf-8", newline="\n")
     (RULES / "reject.txt").write_text(
         "\n".join(header + [f".{d}" for d in result]) + "\n", encoding="utf-8", newline="\n")
+    (RULES / "reject-mihomo.txt").write_text(
+        "\n".join(header + [f"+.{d}" for d in result]) + "\n", encoding="utf-8", newline="\n")
     print(f"Исходных доменов: {len(domains)}")
     print(f"Итого: {len(result)} (убрано поддоменов-дублей: {len(domains) - len(result) - len(removed)})")
     if removed:

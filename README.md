@@ -1,6 +1,6 @@
 # xRocket
 
-Личные настройки маршрутизации и блокировки рекламы для **Shadowrocket** и **Loon** (iPhone, iPad) и **Throne** (Windows).
+Личные настройки маршрутизации и блокировки рекламы для **Shadowrocket** и **Loon** (iPhone, iPad), **FlClash** (Android, Windows) и **Throne** (Windows).
 
 ## Что внутри
 
@@ -16,9 +16,11 @@
 |---|---|---|
 | Shadowrocket | Конфигурация → добавить по ссылке | `https://xmerdank.github.io/xRocket/xRules.conf` |
 | Loon | Импорт конфигурации по ссылке | `https://xmerdank.github.io/xRocket/xLoon.conf` |
+| FlClash | Скрипт расширения для профиля с вашей подпиской | `https://xmerdank.github.io/xRocket/xFlClash.js` |
 | Throne | Маршрутизация → добавить удалённый (Remote) профиль | `https://xmerdank.github.io/xRocket/Throne.json` |
 
 - **Shadowrocket:** переключатели для ИИ-сервисов, Apple и Spotify («напрямую» или «через сервер») — на главном экране.
+- **FlClash:** сначала добавьте свою подписку как обычный профиль, затем добавьте скрипт по ссылке и включите его в этом профиле («Расширение» → режим скрипта). Серверы берутся из подписки, группы, правила и DNS задаёт скрипт. Сервер выбирается в группе PROXY, переключатели — остальные группы на вкладке «Прокси». Списки правил скачиваются через выбранный сервер.
 - **Throne:** переключатель — это отключение правила, например «Claude → напрямую». Throne помнит отключённые правила и после обновления профиля. Папка Throne должна лежать по пути из латинских букв, иначе прямые соединения не работают.
 
 ## Структура
@@ -26,6 +28,7 @@
 ```
 xRocket/xRules.conf     конфигурация Shadowrocket
 xRocket/xLoon.conf      конфигурация Loon
+xRocket/xFlClash.js     скрипт расширения FlClash
 xRocket/Throne.json     профиль Throne (собирается автоматически из rules/)
 xRocket/rules/          списки правил
 xRocket/modules/        модули YouTube и TikTok
@@ -39,7 +42,7 @@ tools/                  сборка списков и проверка дост
 - [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) (Multi Light, Microsoft Tracker) — GPL-3.0.
 - Модуль YouTube основан на [Maasea/sgmodule](https://github.com/Maasea/sgmodule).
 
-Собранные списки блокировки (`reject.txt`, `reject.list`, `windows-telemetry-hagezi.list`, `Throne.json`) содержат данные этих источников и распространяются на условиях их лицензий.
+Собранные списки блокировки (`reject.txt`, `reject.list`, `reject-mihomo.txt`, `windows-telemetry-hagezi.list`, `Throne.json`) содержат данные этих источников и распространяются на условиях их лицензий.
 
 ## Отказ от ответственности
 
