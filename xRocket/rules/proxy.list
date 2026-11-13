@@ -166,12 +166,9 @@ DOMAIN-SUFFIX,docs.google.com
 DOMAIN,storage.googleapis.com
 # Gemini (память и синхронизация) — DNS отвечает 127.0.0.1. Был в ai/gemini.list.
 DOMAIN-SUFFIX,geller-pa.googleapis.com
-# Поиск Google. Журнал 2026-11-12 20:40: DNS выдал заблокированный в TM сервер 142.251.156.x, телефон
-# запомнил его и несколько минут поиск не открывался (35 из 35 отказ). Часть серверов Google в TM
-# заблокирована, а DNS выдаёт их вперемешку с рабочими (проверка check_direct.py: 2 из 4).
-DOMAIN,www.google.com
-DOMAIN,google.com
-DOMAIN,www.google.tm
+# Поиск Google (www.google.com, google.com, www.google.tm) — напрямую по решению пользователя (2026-11-13),
+# хотя часть серверов Google в TM заблокирована и иногда на несколько минут поиск не открывается
+# (журнал 2026-11-12 20:40: 35 из 35 отказ, сервер 142.251.156.x). Если надоест — вернуть сюда DOMAIN-правила.
 # Загрузка файлов в Google (Фото, Диск): 12 из 21 отказ — сервер 108.177.14.x (журнал 2026-11-13)
 DOMAIN-SUFFIX,content-storage-upload.googleapis.com
 
