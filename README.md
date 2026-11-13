@@ -1,4 +1,4 @@
-# xRocket
+# xRules
 
 Личные настройки маршрутизации и блокировки рекламы для **Shadowrocket** и **Loon** (iPhone, iPad), **FlClash** (Android, Windows) и **Throne** (Windows).
 
@@ -26,13 +26,14 @@
 ## Структура
 
 ```
+index.html              главная страница сайта
 xRules/xRocket.conf     конфигурация Shadowrocket
-xRules/xLoon.conf      конфигурация Loon
-xRules/xFlClash.js     скрипт расширения FlClash
+xRules/xLoon.conf       конфигурация Loon
+xRules/xFlClash.js      скрипт расширения FlClash
 xRules/xThrone.json     профиль Throne (собирается автоматически из rules/)
-xRules/rules/          списки правил
-xRules/modules/        модули YouTube и TikTok
-xRules/scripts/        скрипты
+xRules/rules/           списки правил
+xRules/modules/         модули YouTube и TikTok
+xRules/scripts/         скрипты
 tools/                  сборка списков и проверка доступности адресов
 ```
 

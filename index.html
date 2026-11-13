@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>xRocket</title>
+<meta name="description" content="Настройки маршрутизации и блокировки рекламы для Shadowrocket, Loon, FlClash и Throne.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b5bfd'/%3E%3Cpath d='M9 22 16 8l7 14-7-3.5z' fill='white'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --surface: #ffffff;
+    --surface-2: #f0f2f7;
+    --text: #111827;
+    --muted: #5b6474;
+    --border: #e1e5ee;
+    --accent: #3b5bfd;
+    --accent-hover: #2c49e0;
+    --accent-ink: #ffffff;
+    --ok: #15803d;
+    --shadow: 0 1px 2px rgba(17, 24, 39, .04), 0 4px 16px rgba(17, 24, 39, .05);
+    --c-shadowrocket: #2f80ed;
+    --c-loon: #8b5cf6;
+    --c-flclash: #0f9f6e;
+    --c-throne: #e08a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c1016;
+      --surface: #151a22;
+      --surface-2: #0f141b;
+      --text: #e7ecf3;
+      --muted: #98a2b3;
+      --border: #262d38;
+      --accent: #7d93ff;
+      --accent-hover: #97a8ff;
+      --accent-ink: #0c1016;
+      --ok: #4ade80;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c1016;
+    --surface: #151a22;
+    --surface-2: #0f141b;
+    --text: #e7ecf3;
+    --muted: #98a2b3;
+    --border: #262d38;
+    --accent: #7d93ff;
+    --accent-hover: #97a8ff;
+    --accent-ink: #0c1016;
+    --ok: #4ade80;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code, .url { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+  /* Шапка */
+  header { padding: 56px 0 32px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .brand svg { flex: none; }
+  .brand span { font-weight: 700; font-size: 20px; letter-spacing: -.01em; }
+  h1 { font-size: clamp(28px, 6vw, 42px); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 14px; max-width: 760px; }
+  .lead { font-size: 18px; color: var(--muted); margin: 0 0 24px; max-width: 680px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+  .chips li {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 12px; font-size: 14px; color: var(--muted);
+  }
+  .chips b { color: var(--text); font-weight: 600; }
+
+  section { padding: 28px 0; }
+  h2 { font-size: 22px; letter-spacing: -.01em; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+
+  /* Карточки приложений */
+  .apps { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 720px) { .apps { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; min-width: 0;
+  }
+  .card-head { display: flex; align-items: center; gap: 12px; }
+  .mono {
+    width: 44px; height: 44px; border-radius: 12px; flex: none; display: grid; place-items: center;
+    color: #fff; font-weight: 700; font-size: 20px; background: var(--c);
+  }
+  .card h3 { margin: 0; font-size: 18px; }
+  .platform { font-size: 13px; color: var(--muted); }
+  .steps { margin: 0; padding-left: 20px; color: var(--muted); font-size: 15px; }
+  .steps li + li { margin-top: 4px; }
+  .steps b { color: var(--text); font-weight: 600; }
+  .link-box {
+    display: flex; align-items: stretch; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface-2); overflow: hidden; margin-top: auto;
+  }
+  .url { flex: 1; min-width: 0; padding: 10px 12px; font-size: 13px; overflow-wrap: anywhere; user-select: all; }
+  .copy {
+    flex: none; border: 0; border-left: 1px solid var(--border); background: transparent; color: var(--accent);
+    font: inherit; font-size: 14px; font-weight: 600; padding: 0 14px; cursor: pointer; min-width: 112px;
+  }
+  .copy:hover { background: var(--surface); }
+  .copy.done { color: var(--ok); }
+  .open {
+    display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--accent-ink); border-radius: 10px; padding: 10px 14px;
+    font-weight: 600; font-size: 15px;
+  }
+  .open:hover { background: var(--accent-hover); text-decoration: none; }
+  .note { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* Что внутри */
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+  .feature h3 { margin: 10px 0 6px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+  .ico { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--surface-2); color: var(--accent); }
+  .callout {
+    margin-top: 16px; padding: 14px 16px; border-radius: 12px; border: 1px dashed var(--border);
+    color: var(--muted); font-size: 15px;
+  }
+
+  /* Источники и условия */
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; align-items: start; }
+  .plain { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+  .plain h2 { font-size: 18px; margin-bottom: 10px; }
+  .plain ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+  .plain li + li { margin-top: 6px; }
+  .plain p { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+
+  footer { padding: 28px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 20px; }
+
+  @media (max-width: 480px) {
+    header { padding-top: 36px; }
+    .lead { font-size: 16px; }
+    .copy { min-width: 96px; padding: 0 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg width="36" height="36" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#3b5bfd"/><path d="M9 22 16 8l7 14-7-3.5z" fill="#fff"/></svg>
+      <span>xRocket</span>
+    </div>
+    <h1>Маршрутизация и блокировка рекламы в одной ссылке</h1>
+    <p class="lead">Готовые настройки для Shadowrocket, Loon, FlClash и Throne: часть сайтов открывается напрямую, остальное — через ваш прокси-сервер, реклама и трекеры отсекаются.</p>
+    <ul class="chips">
+      <li><b>≈126 тыс.</b> доменов в списке блокировки</li>
+      <li>обновление <b>раз в неделю</b></li>
+      <li><b>4</b> приложения</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="install">
+    <div class="wrap">
+      <h2>Подключение</h2>
+      <p class="sub">Скопируйте ссылку и добавьте её в приложение. Обновления приходят сами.</p>
+
+      <div class="apps">
+        <article class="card">
+          <div class="card-head">
+            <div class="mono" style="--c: var(--c-shadowrocket)">S</div>
+            <div><h3>Shadowrocket</h3><div class="platform">iPhone, iPad</div></div>
+          </div>
+          <ol class="steps">
+            <li><b>Конфигурация</b> → «+» → вставьте ссылку.</li>
+            <li>Нажмите на конфигурацию → <b>Использовать</b>.</li>
+          </ol>
+          <a class="open" href="shadowrocket://config/add/https://xmerdank.github.io/xRules/xRocket.conf">Добавить в Shadowrocket</a>
+          <div class="link-box">
+            <code class="url">https://xmerdank.github.io/xRules/xRocket.conf</code>
+            <button class="copy" type="button" data-copy="https://xmerdank.github.io/xRules/xRocket.conf">Копировать</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div class="mono" style="--c: var(--c-loon)">L</div>
+            <div><h3>Loon</h3><div class="platform">iPhone, iPad</div></div>
+          </div>
+          <ol class="steps">
+            <li><b>Конфигурация</b> → импорт по ссылке.</li>
+            <li>Вставьте ссылку и сохраните.</li>
+          </ol>
+          <div class="link-box">
+            <code class="url">https://xmerdank.github.io/xRules/xLoon.conf</code>
+            <button class="copy" type="button" data-copy="https://xmerdank.github.io/xRules/xLoon.conf">Копировать</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div class="mono" style="--c: var(--c-flclash)">F</div>
+            <div><h3>FlClash</h3><div class="platform">Android, Windows</div></div>
+          </div>
+          <ol class="steps">
+            <li>Добавьте свою подписку как обычный профиль.</li>
+            <li>Добавьте скрипт по ссылке ниже.</li>
+            <li>В профиле: <b>Расширение</b> → режим скрипта → этот скрипт.</li>
+          </ol>
+          <div class="link-box">
+            <code class="url">https://xmerdank.github.io/xRules/xFlClash.js</code>
+            <button class="copy" type="button" data-copy="https://xmerdank.github.io/xRules/xFlClash.js">Копировать</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div class="mono" style="--c: var(--c-throne)">T</div>
+            <div><h3>Throne</h3><div class="platform">Windows</div></div>
+          </div>
+          <ol class="steps">
+            <li><b>Маршрутизация</b> → добавить удалённый (Remote) профиль.</li>
+            <li>Папка Throne должна лежать по пути из латинских букв.</li>
+          </ol>
+          <a class="open" href="throne://remoteroute/aHR0cHM6Ly94bWVyZGFuay5naXRodWIuaW8veFJ1bGVzL3hUaHJvbmUuanNvbiN4bW4=">Добавить в Throne</a>
+          <div class="link-box">
+            <code class="url">https://xmerdank.github.io/xRules/xThrone.json</code>
+            <button class="copy" type="button" data-copy="https://xmerdank.github.io/xRules/xThrone.json">Копировать</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Что внутри</h2>
+      <p class="sub">Одни и те же списки правил для всех четырёх приложений.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+          <h3>Маршрутизация</h3>
+          <p>Часть сайтов открывается напрямую, остальное — через ваш прокси-сервер.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Блокировка рекламы</h3>
+          <p>Реклама, трекеры и телеметрия. Списки собираются из открытых источников и обновляются автоматически.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Переключатели</h3>
+          <p>ИИ-сервисы, Apple и Spotify — «напрямую» или «через сервер» одним нажатием.</p>
+        </div>
+        <div class="feature">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg></div>
+          <h3>Модули</h3>
+          <p>Модули для YouTube и TikTok.</p>
+        </div>
+      </div>
+      <div class="callout">Серверов и подписок здесь нет — нужен свой прокси-сервер.</div>
+    </div>
+  </section>
+
+  <section id="legal">
+    <div class="wrap two">
+      <div class="plain">
+        <h2>Источники и лицензии</h2>
+        <ul>
+          <li><a href="https://github.com/StevenBlack/hosts">StevenBlack/hosts</a> — MIT.</li>
+          <li><a href="https://github.com/hagezi/dns-blocklists">HaGeZi DNS Blocklists</a> (Multi Light, Microsoft Tracker) — GPL-3.0.</li>
+          <li>Модуль YouTube основан на <a href="https://github.com/Maasea/sgmodule">Maasea/sgmodule</a>.</li>
+        </ul>
+        <p>Собранные списки блокировки содержат данные этих источников и распространяются на условиях их лицензий.</p>
+      </div>
+      <div class="plain">
+        <h2>Отказ от ответственности</h2>
+        <ul>
+          <li>Проект личный и некоммерческий, создан для изучения и тестирования сетевых настроек. Всё предоставляется «как есть», без каких-либо гарантий.</li>
+          <li>Автор не несёт ответственности за любой ущерб, сбои, потерю данных и иные последствия использования материалов.</li>
+          <li>Вы сами отвечаете за то, чтобы ваше использование соответствовало законам вашей страны и правилам сервисов и приложений.</li>
+          <li>Проект не предоставляет VPN- и прокси-серверов и не связан с разработчиками упомянутых приложений и сервисов. Их названия и товарные знаки принадлежат владельцам.</li>
+          <li>Скрипты предназначены только для исследования и тестирования; коммерческое использование запрещено.</li>
+          <li>Правообладатель может написать через <a href="https://github.com/xmerdank/xmerdank.github.io/issues">Issues</a> — материал будет удалён.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>xRocket — личный проект</span>
+    <a href="https://github.com/xmerdank/xmerdank.github.io">Исходники на GitHub</a>
+  </div>
+</footer>
+
+<script>
+  // Копирование ссылок: Clipboard API, а если он недоступен — через выделение текста.
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy");
+      var done = function () {
+        btn.textContent = "Скопировано";
+        btn.classList.add("done");
+        setTimeout(function () { btn.textContent = "Копировать"; btn.classList.remove("done"); }, 1800);
+      };
+      var fallback = function () {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+</script>
+</body>
+</html>
