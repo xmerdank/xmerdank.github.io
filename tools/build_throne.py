@@ -6,10 +6,10 @@
 Использование:
     python tools/build_throne.py
 
-Результат: xRocket/Throne.json — удалённый профиль Throne
-(в Throne: Маршрутизация → добавить Remote профиль → https://xmerdank.github.io/xRocket/Throne.json).
+Результат: xRules/xThrone.json — удалённый профиль Throne
+(в Throne: Маршрутизация → добавить Remote профиль → https://xmerdank.github.io/xRules/xThrone.json).
 
-Порядок правил повторяет xRules.conf: реклама → ИИ → VPN → Apple → Spotify → Туркменистан → напрямую,
+Порядок правил повторяет xRocket.conf: реклама → ИИ → VPN → Apple → Spotify → Туркменистан → напрямую,
 всё остальное — через VPN (default_outbound = proxy).
 Скачиваемые наборы правил (geosite-*/geoip-*) НЕ используются. Throne качает их через зеркало
 jsDelivr (Cloudflare), которое в TM работает плохо, а DNS-правила Throne объединяют наборы из всех
@@ -29,8 +29,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RULES = ROOT / "xRocket" / "rules"
-OUT = ROOT / "xRocket" / "Throne.json"
+RULES = ROOT / "xRules" / "rules"
+OUT = ROOT / "xRules" / "xThrone.json"
 
 FIELD = {
     "DOMAIN-SUFFIX": "domain_suffix",

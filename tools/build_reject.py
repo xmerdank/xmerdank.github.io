@@ -5,9 +5,9 @@
 Использование:
     python tools/build_reject.py                 # скачать свежие источники (StevenBlack + HaGeZi Light)
     python tools/build_reject.py hosts.txt       # взять один локальный файл вместо источников
-    python tools/build_reject.py xRocket/rules/reject.list   # пересобрать из старого списка
+    python tools/build_reject.py xRules/rules/reject.list   # пересобрать из старого списка
 
-Результат (в xRocket/rules/):
+Результат (в xRules/rules/):
     reject.list  — RULE-SET (DOMAIN-SUFFIX,домен) — для Loon и как запасной вариант
     reject.txt   — DOMAIN-SET (.домен)            — для Shadowrocket, легче и быстрее
     reject-mihomo.txt — набор доменов mihomo (+.домен) — для FlClash (xFlClash.js). В mihomo запись
@@ -20,7 +20,7 @@
 (например, ads.example.com при наличии example.com), мусор из шапки hosts-файла
 и домены, которые конфликтуют с proxy/direct списками.
 
-Если список заблокировал что-то нужное — добавить адрес в xRocket/rules/reject-allow.list
+Если список заблокировал что-то нужное — добавить адрес в xRules/rules/reject-allow.list
 и пересобрать (вкладка Actions → "Обновление списков блокировки" → Run workflow).
 
 Почему именно эти два источника (замер 2026-11-11 по журналам Shadowrocket, 37,5 тыс. соединений):
@@ -44,7 +44,7 @@ SOURCES = [
      "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/light-onlydomains.txt"),
 ]
 ROOT = Path(__file__).resolve().parent.parent
-RULES = ROOT / "xRocket" / "rules"
+RULES = ROOT / "xRules" / "rules"
 
 # Телеметрия Windows, Office, Edge, Bing, Xbox — список встроенных трекеров Microsoft от HaGeZi (~365 адресов).
 # Идёт отдельным файлом и подключается только в Throne (правило «Телеметрия Windows → блок»):

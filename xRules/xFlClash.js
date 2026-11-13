@@ -3,15 +3,15 @@
 //
 // Скрипт расширения FlClash (Android, Windows, macOS, Linux): накладывает наши правила на вашу подписку.
 // Серверы берутся из подписки, всё остальное (группы, правила, DNS) задаёт этот скрипт.
-// Подключение — в README.md. Ссылка: https://xmerdank.github.io/xRocket/xFlClash.js
+// Подключение — в README.md. Ссылка: https://xmerdank.github.io/xRules/xFlClash.js
 //
-// Правила те же, что в xRules.conf (Shadowrocket), и в том же порядке. Списки — те же файлы из rules/,
+// Правила те же, что в xRocket.conf (Shadowrocket), и в том же порядке. Списки — те же файлы из rules/,
 // mihomo понимает их формат. Строки, которых mihomo не знает (URL-REGEX в reject2.list), он пропускает.
 // Рекламный список — reject-mihomo.txt: те же домены, что в reject.txt, но в записи «+.домен».
 
-const RULES_URL = "https://xmerdank.github.io/xRocket/rules/";
+const RULES_URL = "https://xmerdank.github.io/xRules/rules/";
 
-// Переключатели: первый пункт — значение по умолчанию (как в xRules.conf).
+// Переключатели: первый пункт — значение по умолчанию (как в xRocket.conf).
 const SWITCHES = [
   // ИИ-сервисы
   ["ChatGPT", "PROXY"],

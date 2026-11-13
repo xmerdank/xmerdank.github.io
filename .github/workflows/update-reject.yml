@@ -37,13 +37,13 @@ jobs:
       - name: Сохранить изменения
         run: |
           # Строку с датой сборки не считаем изменением — коммит только если поменялись сами домены
-          if git diff --quiet -I '^# (Собрано|Доменов):' -- xRocket/rules/reject.list xRocket/rules/reject.txt xRocket/rules/reject-mihomo.txt xRocket/rules/windows-telemetry-hagezi.list; then
+          if git diff --quiet -I '^# (Собрано|Доменов):' -- xRules/rules/reject.list xRules/rules/reject.txt xRules/rules/reject-mihomo.txt xRules/rules/windows-telemetry-hagezi.list; then
             echo "Домены не изменились — коммит не нужен."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add xRocket/rules/reject.list xRocket/rules/reject.txt xRocket/rules/reject-mihomo.txt xRocket/rules/windows-telemetry-hagezi.list xRocket/Throne.json
+          git add xRules/rules/reject.list xRules/rules/reject.txt xRules/rules/reject-mihomo.txt xRules/rules/windows-telemetry-hagezi.list xRules/xThrone.json
           git commit -m "Обновление списков блокировки $(date -u +%Y-%m-%d)"
           git pull --rebase
           git push

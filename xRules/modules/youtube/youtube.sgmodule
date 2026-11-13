@@ -1,5 +1,5 @@
-#!url=https://xmerdank.github.io/xRocket/modules/youtube/YouTube.Enhance.sgmodule
-#!name=Улучшение YouTube (Музыка)
+#!url=https://xmerdank.github.io/xRules/modules/youtube/youtube.sgmodule
+#!name=xYoutube(Music) @xmerdank
 #!desc=Убирает рекламу в YouTube и YouTube Music, включает PiP и фоновое воспроизведение. Скрипты загружаются напрямую у автора (Maasea).
 #!arguments=Скрыть кнопку загрузки:true,Скрыть кнопку выбора:true,Скрыть кнопку Shorts:false,Язык перевода субтитров:off,Режим отладки:false
 #!arguments-desc=- Кнопки: [true, false]\n- Язык перевода: код языка Google Translate (ru, en, tk ...) или off — выключить перевод\n- Режим отладки: подробные логи скрипта

@@ -14,10 +14,10 @@
 
 | Приложение | Куда добавить | Ссылка |
 |---|---|---|
-| Shadowrocket | Конфигурация → добавить по ссылке | `https://xmerdank.github.io/xRocket/xRules.conf` |
-| Loon | Импорт конфигурации по ссылке | `https://xmerdank.github.io/xRocket/xLoon.conf` |
-| FlClash | Скрипт расширения для профиля с вашей подпиской | `https://xmerdank.github.io/xRocket/xFlClash.js` |
-| Throne | Маршрутизация → добавить удалённый (Remote) профиль | `https://xmerdank.github.io/xRocket/Throne.json` |
+| Shadowrocket | Конфигурация → добавить по ссылке | `https://xmerdank.github.io/xRules/xRocket.conf` |
+| Loon | Импорт конфигурации по ссылке | `https://xmerdank.github.io/xRules/xLoon.conf` |
+| FlClash | Скрипт расширения для профиля с вашей подпиской | `https://xmerdank.github.io/xRules/xFlClash.js` |
+| Throne | Маршрутизация → добавить удалённый (Remote) профиль | `https://xmerdank.github.io/xRules/xThrone.json` |
 
 - **Shadowrocket:** переключатели для ИИ-сервисов, Apple и Spotify («напрямую» или «через сервер») — на главном экране.
 - **FlClash:** сначала добавьте свою подписку как обычный профиль, затем добавьте скрипт по ссылке и включите его в этом профиле («Расширение» → режим скрипта). Серверы берутся из подписки, группы, правила и DNS задаёт скрипт. Сервер выбирается в группе PROXY, переключатели — остальные группы на вкладке «Прокси». Списки правил скачиваются через выбранный сервер.
@@ -26,13 +26,13 @@
 ## Структура
 
 ```
-xRocket/xRules.conf     конфигурация Shadowrocket
-xRocket/xLoon.conf      конфигурация Loon
-xRocket/xFlClash.js     скрипт расширения FlClash
-xRocket/Throne.json     профиль Throne (собирается автоматически из rules/)
-xRocket/rules/          списки правил
-xRocket/modules/        модули YouTube и TikTok
-xRocket/scripts/        скрипты
+xRules/xRocket.conf     конфигурация Shadowrocket
+xRules/xLoon.conf      конфигурация Loon
+xRules/xFlClash.js     скрипт расширения FlClash
+xRules/xThrone.json     профиль Throne (собирается автоматически из rules/)
+xRules/rules/          списки правил
+xRules/modules/        модули YouTube и TikTok
+xRules/scripts/        скрипты
 tools/                  сборка списков и проверка доступности адресов
 ```
 
@@ -42,7 +42,7 @@ tools/                  сборка списков и проверка дост
 - [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) (Multi Light, Microsoft Tracker) — GPL-3.0.
 - Модуль YouTube основан на [Maasea/sgmodule](https://github.com/Maasea/sgmodule).
 
-Собранные списки блокировки (`reject.txt`, `reject.list`, `reject-mihomo.txt`, `windows-telemetry-hagezi.list`, `Throne.json`) содержат данные этих источников и распространяются на условиях их лицензий.
+Собранные списки блокировки (`reject.txt`, `reject.list`, `reject-mihomo.txt`, `windows-telemetry-hagezi.list`, `xThrone.json`) содержат данные этих источников и распространяются на условиях их лицензий.
 
 ## Отказ от ответственности
 
@@ -50,6 +50,6 @@ tools/                  сборка списков и проверка дост
 - Автор не несёт ответственности за любой ущерб, сбои, потерю данных и иные последствия использования материалов.
 - Вы сами отвечаете за то, чтобы ваше использование соответствовало законам вашей страны, а также правилам сервисов и приложений.
 - Проект не предоставляет VPN- и прокси-серверов и не связан с разработчиками упомянутых приложений и сервисов. Их названия и товарные знаки принадлежат владельцам.
-- Скрипты в `xRocket/scripts/` предназначены только для исследования и тестирования; коммерческое использование запрещено. Если приложение вам нравится, поддержите разработчика и купите подписку.
+- Скрипты в `xRules/scripts/` предназначены только для исследования и тестирования; коммерческое использование запрещено. Если приложение вам нравится, поддержите разработчика и купите подписку.
 - Правообладатель, который считает, что материалы нарушают его права, может написать через [Issues](https://github.com/xmerdank/xmerdank.github.io/issues) — материал будет удалён.
 - Используя или копируя материалы репозитория, вы соглашаетесь с этими условиями.

@@ -39,7 +39,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RULES = ROOT / "xRocket" / "rules"
+RULES = ROOT / "xRules" / "rules"
 
 DIRECT_LISTS = ["ai/claude.list", "ai/gemini.list", "facetime.list", "apple.list", "tmdirect.list", "direct.list"]
 PROXY_LIST = "proxy.list"

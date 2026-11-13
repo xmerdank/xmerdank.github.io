@@ -35,9 +35,9 @@ DOMAIN-KEYWORD, tiktok, PROXY
 USER-AGENT, TikTok*, PROXY
 
 [Script]
-http-request ^https?:\/\/((tnc|dm)[\w-]+.+?\.com\/.+|.+\.(byteoversea|tiktokv).com\/.+(_region=CN&|&mcc_mnc=4)) script-path = https://xmerdank.github.io/xRocket/modules/tiktok/TikTok_redirect.js, tag = TikTok_redirect
+http-request ^https?:\/\/((tnc|dm)[\w-]+.+?\.com\/.+|.+\.(byteoversea|tiktokv).com\/.+(_region=CN&|&mcc_mnc=4)) script-path = https://xmerdank.github.io/xRules/modules/tiktok/TikTok_redirect.js, tag = TikTok_redirect
 
-http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/(favorite|listcollection)) script-path = https://xmerdank.github.io/xRocket/modules/tiktok/TikTok_remove_watermark.js, requires-body = true, tag = TikTok_watermark
+http-response https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/(favorite|listcollection)) script-path = https://xmerdank.github.io/xRules/modules/tiktok/TikTok_remove_watermark.js, requires-body = true, tag = TikTok_watermark
 
 [Mitm]
 hostname = *.byteoversea.com, *.tik-tokapi.com, *.tiktokv.com

@@ -1,4 +1,4 @@
-# Пересборка профиля Throne (xRocket/Throne.json) при каждом изменении списков правил.
+# Пересборка профиля Throne (xRules/xThrone.json) при каждом изменении списков правил.
 # Запуск вручную: вкладка Actions → "Сборка профиля Throne" → Run workflow.
 name: Сборка профиля Throne
 
@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "xRocket/rules/**"
+      - "xRules/rules/**"
       - "tools/build_throne.py"
   workflow_dispatch:
 
@@ -27,18 +27,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Собрать Throne.json из списков
+      - name: Собрать xThrone.json из списков
         run: python tools/build_throne.py
 
       - name: Сохранить изменения
         run: |
-          if git diff --quiet -- xRocket/Throne.json; then
+          if git diff --quiet -- xRules/xThrone.json; then
             echo "Профиль Throne не изменился."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add xRocket/Throne.json
+          git add xRules/xThrone.json
           git commit -m "Обновление профиля Throne"
           git pull --rebase
           git push
