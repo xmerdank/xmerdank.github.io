@@ -2,13 +2,14 @@
 # Источник: HaGeZi Native Tracker — Microsoft (Windows/Office) — https://github.com/hagezi/dns-blocklists
 # Файл собирается автоматически, руками не править: свои адреса — в windows-telemetry.list,
 # исключения — в reject-allow.list.
-# Собрано: 2026-11-12 скриптом tools/build_reject.py
-# Доменов: 364 (каждый блокируется вместе с поддоменами)
+# Собрано: 2026-11-16 скриптом tools/build_reject.py
+# Доменов: 398 (каждый блокируется вместе с поддоменами)
 
 DOMAIN-SUFFIX,a-ring-fallback.msedge.net
 DOMAIN-SUFFIX,a-ring.msedge.net
 DOMAIN-SUFFIX,a4.bing.com
 DOMAIN-SUFFIX,ac2.msn.com
+DOMAIN-SUFFIX,ac3.msn.com
 DOMAIN-SUFFIX,activity.windows.com
 DOMAIN-SUFFIX,ad.msn.com
 DOMAIN-SUFFIX,adevents.msn.com
@@ -18,6 +19,7 @@ DOMAIN-SUFFIX,ads.jp.msn.com
 DOMAIN-SUFFIX,ads.microsoft.com
 DOMAIN-SUFFIX,ads.msn.com
 DOMAIN-SUFFIX,ads1.msn.com
+DOMAIN-SUFFIX,ads2.msn.com
 DOMAIN-SUFFIX,adsdk.microsoft.com
 DOMAIN-SUFFIX,adsdk.trafficmanager.net
 DOMAIN-SUFFIX,adsdkpreprod.afd.azureedge.net
@@ -26,6 +28,8 @@ DOMAIN-SUFFIX,adsdkprod.afd.azureedge.net
 DOMAIN-SUFFIX,adsdkprod.azureedge.net
 DOMAIN-SUFFIX,adserver.bing.com
 DOMAIN-SUFFIX,adstore.response.gcp.eastus.trafficmanager.net
+DOMAIN-SUFFIX,adsyndication.msn.com
+DOMAIN-SUFFIX,adsyndication.msn.com.nsatc.net
 DOMAIN-SUFFIX,advertising.jp.msn.com
 DOMAIN-SUFFIX,advertising.microsoft.com
 DOMAIN-SUFFIX,agps-location-livenet.trafficmanager.net
@@ -33,7 +37,9 @@ DOMAIN-SUFFIX,analytics-dev-lleap-events.servicebus.windows.net
 DOMAIN-SUFFIX,analytics-dev-simpad-events.servicebus.windows.net
 DOMAIN-SUFFIX,analytics-listener.trafficmanager.net
 DOMAIN-SUFFIX,analytics.live.com
+DOMAIN-SUFFIX,analytics.msn.com
 DOMAIN-SUFFIX,analytics.msnbc.msn.com
+DOMAIN-SUFFIX,analytics.pstnhub.microsoft.com
 DOMAIN-SUFFIX,analytics.trafficmanager.net
 DOMAIN-SUFFIX,analyticsehnwe.servicebus.windows.net
 DOMAIN-SUFFIX,analyticsiot-prod-mobileapps-ehn.servicebus.windows.net
@@ -47,16 +53,13 @@ DOMAIN-SUFFIX,arc1.msn.com
 DOMAIN-SUFFIX,arc2.msn.com
 DOMAIN-SUFFIX,arc3.msn.com
 DOMAIN-SUFFIX,arc9.msn.com
-DOMAIN-SUFFIX,arctb53wmig1gagbqjqgolj2ig.msn.com
 DOMAIN-SUFFIX,auc-visio-telemetry.officeapps.live.com
-DOMAIN-SUFFIX,audiobible-production-analytics-eh.servicebus.windows.net
 DOMAIN-SUFFIX,az667904.vo.msecnd.net
 DOMAIN-SUFFIX,azurewatson.microsoft.com
 DOMAIN-SUFFIX,azurewatsontest.microsoft.com
 DOMAIN-SUFFIX,b-ring-fallback.msedge.net
 DOMAIN-SUFFIX,b-ring.msedge.net
 DOMAIN-SUFFIX,bat.bing.com
-DOMAIN-SUFFIX,bat.r.msn.com
 DOMAIN-SUFFIX,beacons.trafficmanager.net
 DOMAIN-SUFFIX,beacons.xboxlive.com
 DOMAIN-SUFFIX,bingads.microsoft.com
@@ -128,7 +131,6 @@ DOMAIN-SUFFIX,clarity.microsoft.com
 DOMAIN-SUFFIX,collection-location-livenet.trafficmanager.net
 DOMAIN-SUFFIX,collector-main.trafficmanager.net
 DOMAIN-SUFFIX,collector.azure.cn
-DOMAIN-SUFFIX,collector.azure.eaglex.ic.gov
 DOMAIN-SUFFIX,collector.azure.microsoft.cloud
 DOMAIN-SUFFIX,commerce.bing.com
 DOMAIN-SUFFIX,confiant.msn.com
@@ -142,7 +144,7 @@ DOMAIN-SUFFIX,dsp-ad-cache-tm.trafficmanager.net
 DOMAIN-SUFFIX,dual-s-ring.msedge.net
 DOMAIN-SUFFIX,eaus2watcab01.blob.core.windows.net
 DOMAIN-SUFFIX,eaus2watcab02.blob.core.windows.net
-DOMAIN-SUFFIX,ehtelemetrystaging.servicebus.windows.net
+DOMAIN-SUFFIX,esc-visio-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,euc-excel-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,euc-excel-telemetry.wac.trafficmanager.net
 DOMAIN-SUFFIX,euc-onenote-telemetry.officeapps.live.com
@@ -167,7 +169,6 @@ DOMAIN-SUFFIX,excel-telemetry.wac.trafficmanager.net
 DOMAIN-SUFFIX,feedback.search.microsoft.com
 DOMAIN-SUFFIX,ffc-excel-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,ffc-word-telemetry.officeapps.live.com
-DOMAIN-SUFFIX,fgteu1-word-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,flex.msn.com
 DOMAIN-SUFFIX,fp.msedge.net
 DOMAIN-SUFFIX,frc-visio-telemetry.officeapps.live.com
@@ -176,16 +177,17 @@ DOMAIN-SUFFIX,g00.msn.com
 DOMAIN-SUFFIX,gateway.bingviz.microsoftapp.net
 DOMAIN-SUFFIX,ghochv3eng.trafficmanager.net
 DOMAIN-SUFFIX,glance-analytics.trafficmanager.net
+DOMAIN-SUFFIX,h.msn.com
 DOMAIN-SUFFIX,h1.msn.com
 DOMAIN-SUFFIX,h2.msn.com
 DOMAIN-SUFFIX,h4g3z1-native-winoffice.web.app
 DOMAIN-SUFFIX,h6.msn.com
 DOMAIN-SUFFIX,hk-tracker.trafficmanager.net
-DOMAIN-SUFFIX,hme-live-loganalytics-namespace.servicebus.windows.net
 DOMAIN-SUFFIX,hme-uat-loganalytics-namespace.servicebus.windows.net
 DOMAIN-SUFFIX,i1.services.social.microsoft.com
 DOMAIN-SUFFIX,icmskillevents.trafficmanager.net
 DOMAIN-SUFFIX,ieonline.microsoft.com
+DOMAIN-SUFFIX,in.appcenter.ms
 DOMAIN-SUFFIX,in.applicationinsights.azure.cn
 DOMAIN-SUFFIX,in.applicationinsights.azure.us
 DOMAIN-SUFFIX,inc-visio-telemetry.officeapps.live.com
@@ -208,6 +210,7 @@ DOMAIN-SUFFIX,js2.cdn.applicationinsights.io
 DOMAIN-SUFFIX,js2.tst.applicationinsights.io
 DOMAIN-SUFFIX,k-ring-fallback.msedge.net
 DOMAIN-SUFFIX,k-ring.msedge.net
+DOMAIN-SUFFIX,keyniusprod-events.trafficmanager.net
 DOMAIN-SUFFIX,kg-legacy-analytics.servicebus.windows.net
 DOMAIN-SUFFIX,legacywatson.trafficmanager.net
 DOMAIN-SUFFIX,licensingtelemetry-prod.servicebus.windows.net
@@ -234,11 +237,13 @@ DOMAIN-SUFFIX,nexusrules.officeapps.live.com
 DOMAIN-SUFFIX,nexxtv-events.servicebus.windows.net
 DOMAIN-SUFFIX,noc-visio-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,o.xbox.com
+DOMAIN-SUFFIX,o365diagtelemetry.trafficmanager.net
 DOMAIN-SUFFIX,oca.microsoft.com
 DOMAIN-SUFFIX,office-events-data.trafficmanager.net
 DOMAIN-SUFFIX,oms-analytics.trafficmanager.net
 DOMAIN-SUFFIX,outlookads.live.com
 DOMAIN-SUFFIX,partnerfraudevents.trafficmanager.net
+DOMAIN-SUFFIX,pgtbr1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtbr2-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu1-powerpoint-telemetry-vip.officeapps.live.com
@@ -251,7 +256,10 @@ DOMAIN-SUFFIX,pgteu3-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu3-word-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu4-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu4-powerpoint-telemetry-vip.officeapps.live.com
+DOMAIN-SUFFIX,pgteu4-word-telemetry-vip.officeapps.live.com
+DOMAIN-SUFFIX,pgteu5-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu5-powerpoint-telemetry-vip.officeapps.live.com
+DOMAIN-SUFFIX,pgteu5-word-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtus1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtus1-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtus1-word-telemetry-vip.officeapps.live.com
@@ -288,12 +296,31 @@ DOMAIN-SUFFIX,prod-eh-v1-analytics.servicebus.windows.net
 DOMAIN-SUFFIX,prod-eventhub-analytics.servicebus.windows.net
 DOMAIN-SUFFIX,prod.editor.ads.trafficmanager.net
 DOMAIN-SUFFIX,production-jobactivity-analytics.servicebus.windows.net
+DOMAIN-SUFFIX,r.msn.com
 DOMAIN-SUFFIX,rad.live.com
 DOMAIN-SUFFIX,rad.microsoft.com
 DOMAIN-SUFFIX,rads.msn.com
 DOMAIN-SUFFIX,raka.bing.com
 DOMAIN-SUFFIX,rawtelemetry-east.servicebus.windows.net
 DOMAIN-SUFFIX,rawtelemetry-west.servicebus.windows.net
+DOMAIN-SUFFIX,rddiagnostics-g-apac-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-au-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-br-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-ca-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-ch-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-de-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-es-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-eu-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-fr-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-gb-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-il-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-in-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-jp-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-kr-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-mx-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-no-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-sa-r1.wvd.microsoft.com
+DOMAIN-SUFFIX,rddiagnostics-g-us-r0.wvd.microsoft.com
 DOMAIN-SUFFIX,redir.metaservices.microsoft.com
 DOMAIN-SUFFIX,rel.msn.com
 DOMAIN-SUFFIX,rmads.eu.msn.com
@@ -347,6 +374,13 @@ DOMAIN-SUFFIX,tracker.flightview.com.trafficmanager.net
 DOMAIN-SUFFIX,udc.msn.com
 DOMAIN-SUFFIX,ukc-onenote-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,ukc-visio-telemetry.officeapps.live.com
+DOMAIN-SUFFIX,us-mesh-events-data-leafs.trafficmanager.net
+DOMAIN-SUFFIX,us1-excel-telemetry.officeapps.live.com
+DOMAIN-SUFFIX,us1-powerpoint-telemetry.officeapps.live.com
+DOMAIN-SUFFIX,us1-word-telemetry.officeapps.live.com
+DOMAIN-SUFFIX,us4-excel-telemetry.officeapps.live.com
+DOMAIN-SUFFIX,us5-word-telemetry.officeapps.live.com
+DOMAIN-SUFFIX,us6-excel-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,usc-onenote-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,usc-visio-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,utm.sankei.jp.msn.com
