@@ -2,8 +2,8 @@
 # Источник: HaGeZi Native Tracker — Microsoft (Windows/Office) — https://github.com/hagezi/dns-blocklists
 # Файл собирается автоматически, руками не править: свои адреса — в windows-telemetry.list,
 # исключения — в reject-allow.list.
-# Собрано: 2026-11-16 скриптом tools/build_reject.py
-# Доменов: 398 (каждый блокируется вместе с поддоменами)
+# Собрано: 2026-11-23 скриптом tools/build_reject.py
+# Доменов: 395 (каждый блокируется вместе с поддоменами)
 
 DOMAIN-SUFFIX,a-ring-fallback.msedge.net
 DOMAIN-SUFFIX,a-ring.msedge.net
@@ -29,7 +29,6 @@ DOMAIN-SUFFIX,adsdkprod.azureedge.net
 DOMAIN-SUFFIX,adserver.bing.com
 DOMAIN-SUFFIX,adstore.response.gcp.eastus.trafficmanager.net
 DOMAIN-SUFFIX,adsyndication.msn.com
-DOMAIN-SUFFIX,adsyndication.msn.com.nsatc.net
 DOMAIN-SUFFIX,advertising.jp.msn.com
 DOMAIN-SUFFIX,advertising.microsoft.com
 DOMAIN-SUFFIX,agps-location-livenet.trafficmanager.net
@@ -42,7 +41,6 @@ DOMAIN-SUFFIX,analytics.msnbc.msn.com
 DOMAIN-SUFFIX,analytics.pstnhub.microsoft.com
 DOMAIN-SUFFIX,analytics.trafficmanager.net
 DOMAIN-SUFFIX,analyticsehnwe.servicebus.windows.net
-DOMAIN-SUFFIX,analyticsiot-prod-mobileapps-ehn.servicebus.windows.net
 DOMAIN-SUFFIX,analyticspixel.microsoft.com
 DOMAIN-SUFFIX,api.edgeoffer.microsoft.com
 DOMAIN-SUFFIX,applicationinsights.azure.com
@@ -158,6 +156,7 @@ DOMAIN-SUFFIX,eurppc-excel-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,eurppc-powerpoint-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,eurppc-word-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,events-sandbox.data.microsoft.com
+DOMAIN-SUFFIX,events-sandbox.data.msn.cn
 DOMAIN-SUFFIX,events-sandbox.data.msn.com
 DOMAIN-SUFFIX,events.data.microsoft.com
 DOMAIN-SUFFIX,events.data.msn.cn
@@ -185,7 +184,7 @@ DOMAIN-SUFFIX,h6.msn.com
 DOMAIN-SUFFIX,hk-tracker.trafficmanager.net
 DOMAIN-SUFFIX,hme-uat-loganalytics-namespace.servicebus.windows.net
 DOMAIN-SUFFIX,i1.services.social.microsoft.com
-DOMAIN-SUFFIX,icmskillevents.trafficmanager.net
+DOMAIN-SUFFIX,identity.nel.measure.office.net.intern.schreinereistumpf.de
 DOMAIN-SUFFIX,ieonline.microsoft.com
 DOMAIN-SUFFIX,in.appcenter.ms
 DOMAIN-SUFFIX,in.applicationinsights.azure.cn
@@ -245,6 +244,7 @@ DOMAIN-SUFFIX,outlookads.live.com
 DOMAIN-SUFFIX,partnerfraudevents.trafficmanager.net
 DOMAIN-SUFFIX,pgtbr1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtbr2-excel-telemetry-vip.officeapps.live.com
+DOMAIN-SUFFIX,pgtca1-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu1-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu1-word-telemetry-vip.officeapps.live.com
@@ -258,8 +258,8 @@ DOMAIN-SUFFIX,pgteu4-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu4-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu4-word-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu5-excel-telemetry-vip.officeapps.live.com
-DOMAIN-SUFFIX,pgteu5-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgteu5-word-telemetry-vip.officeapps.live.com
+DOMAIN-SUFFIX,pgtmx1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtus1-excel-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtus1-powerpoint-telemetry-vip.officeapps.live.com
 DOMAIN-SUFFIX,pgtus1-word-telemetry-vip.officeapps.live.com
@@ -345,13 +345,11 @@ DOMAIN-SUFFIX,statsfe1.ws.microsoft.com
 DOMAIN-SUFFIX,statsfe2.ws.microsoft.com
 DOMAIN-SUFFIX,stjjp.msn.com
 DOMAIN-SUFFIX,swiftanalyticsprod.servicebus.windows.net
-DOMAIN-SUFFIX,t-ring-fallback-s2.msedge.net
 DOMAIN-SUFFIX,t-ring-fallback.msedge.net
 DOMAIN-SUFFIX,t-ring-fallbacks1.msedge.net
 DOMAIN-SUFFIX,t-ring-s2.msedge.net
 DOMAIN-SUFFIX,t-ring-trafficshield.msedge.net
 DOMAIN-SUFFIX,t-ring.msedge.net
-DOMAIN-SUFFIX,t-s2-ring.msedge.net
 DOMAIN-SUFFIX,teams-events-data.trafficmanager.net
 DOMAIN-SUFFIX,telecommandsvc.microsoft.com
 DOMAIN-SUFFIX,telem-edge.smartscreen.microsoft.com
@@ -374,7 +372,6 @@ DOMAIN-SUFFIX,tracker.flightview.com.trafficmanager.net
 DOMAIN-SUFFIX,udc.msn.com
 DOMAIN-SUFFIX,ukc-onenote-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,ukc-visio-telemetry.officeapps.live.com
-DOMAIN-SUFFIX,us-mesh-events-data-leafs.trafficmanager.net
 DOMAIN-SUFFIX,us1-excel-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,us1-powerpoint-telemetry.officeapps.live.com
 DOMAIN-SUFFIX,us1-word-telemetry.officeapps.live.com
