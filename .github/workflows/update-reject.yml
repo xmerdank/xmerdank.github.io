@@ -1,4 +1,4 @@
-# Еженедельное обновление рекламных списков (reject.list, reject.txt, reject-mihomo.txt и профиль Throne)
+# Ежемесячное обновление рекламных списков (reject.list, reject.txt, reject-mihomo.txt и профиль Throne)
 # из StevenBlack/hosts и HaGeZi Multi Light (источники — в tools/build_reject.py, SOURCES),
 # а также списка телеметрии Microsoft для Throne (windows-telemetry-hagezi.list).
 # Запуск вручную: вкладка Actions → "Обновление списков блокировки" → Run workflow.
@@ -6,7 +6,7 @@ name: Обновление списков блокировки
 
 on:
   schedule:
-    - cron: "0 3 * * 1"   # каждый понедельник в 03:00 UTC (08:00 по Ашхабаду)
+    - cron: "0 3 1 * *"   # 1-го числа каждого месяца в 03:00 UTC (08:00 по Ашхабаду)
   workflow_dispatch:
 
 permissions:

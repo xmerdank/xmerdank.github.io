@@ -3,7 +3,7 @@
 # Defender, OneDrive и настройки Office здесь не блокируются.
 # Каждая строка блокирует домен вместе со всеми поддоменами.
 # Это ручная часть правила. Вторая часть — windows-telemetry-hagezi.list (список HaGeZi, ~365 адресов,
-# обновляется автоматически раз в неделю).
+# обновляется автоматически раз в месяц).
 
 # Основной канал телеметрии Windows и приложений Microsoft (v10/v20/self/mobile/umwatson/browser...).
 # По журналу Throne 2026-11-11 сюда стучатся VS Code и Office (mobile.events.data.microsoft.com).
